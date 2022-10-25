@@ -1,0 +1,5 @@
+aiohttp==3.8.3
+aresponses==2.1.6
+async-timeout==4.0.2
+pytest==7.2.0
+pytest-asyncio==0.20.1
