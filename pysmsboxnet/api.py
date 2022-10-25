@@ -3,25 +3,24 @@ from aiohttp import ClientSession
 from aiohttp.client import ClientTimeout
 from . import exceptions
 
+
 class Client:
     """API client class."""
 
     def __init__(
-        self,
-        webSession: ClientSession,
-        host: str,
-        cleApi: str,
-        defaultTimeout=30
+        self, webSession: ClientSession, host: str, cleApi: str, defaultTimeout=30
     ):
         """Initialize the SMS."""
         self.host = host
         self.cleApi = cleApi
         self.session = webSession
-        self.timeout=defaultTimeout
+        self.timeout = defaultTimeout
 
     async def send(self, dest: str, msg: str, mode: str, parameters: dict):
         """Send a SMS."""
-        headers = {"authorization": f"App {self.cleApi}",}
+        headers = {
+            "authorization": f"App {self.cleApi}",
+        }
         postData = {
             "dest": dest,
             "msg": msg,
