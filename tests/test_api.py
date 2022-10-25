@@ -1,11 +1,13 @@
 """Tests for pysmsboxnet"""
 
 import asyncio
+from unittest.mock import patch
+
 import aiohttp
 import pytest
-from unittest.mock import patch
-from pysmsboxnet.api import Client
+
 from pysmsboxnet import exceptions
+from pysmsboxnet.api import Client
 
 
 @pytest.mark.asyncio
