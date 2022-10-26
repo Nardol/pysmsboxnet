@@ -6,6 +6,15 @@ import pytest
 from pysmsboxnet import exceptions
 from pysmsboxnet.api import Client
 
+from .const import (
+    SEND_MODE,
+    SMS_MSG,
+    SMS_RECIPIENT,
+    SMSBOX_API_KEY,
+    SMSBOX_HOST,
+    SMSBOX_STRATEGY,
+)
+
 
 @pytest.mark.asyncio
 async def test_parameters_error(aresponses):
@@ -20,13 +29,13 @@ async def test_parameters_error(aresponses):
         ),
     )
     async with aiohttp.ClientSession() as session:
-        sms = Client(session, "https://api.smsbox.pro", "pub-xxxxxxxx")
+        sms = Client(session, SMSBOX_HOST, SMSBOX_API_KEY)
         with pytest.raises(exceptions.ParameterErrorException):
             await sms.send(
-                "9999001",
-                "Test d'un message ! En plus il va être envoyé.",
-                "expert",
-                {"strategy": "2"},
+                SMS_RECIPIENT,
+                SMS_MSG,
+                SEND_MODE,
+                {"strategy": SMSBOX_STRATEGY},
             )
             await session.close()
 
@@ -46,15 +55,15 @@ async def test_bad_auth(aresponses):
     async with aiohttp.ClientSession() as session:
         sms = Client(
             session,
-            "https://api.smsbox.pro",
-            "pub-xxxxx-xxxxx-xxxx-xxxx-xxxxx-xxxxxxxx",
+            SMSBOX_HOST,
+            SMSBOX_API_KEY,
         )
         with pytest.raises(exceptions.AuthException):
             await sms.send(
-                "9999001",
-                "Test d'un message ! En plus il va être envoyé.",
-                "expert",
-                {"strategy": "2"},
+                SMS_RECIPIENT,
+                SMS_MSG,
+                SEND_MODE,
+                {"strategy": SMSBOX_STRATEGY},
             )
             await session.close()
 
@@ -74,15 +83,15 @@ async def test_billing(aresponses):
     async with aiohttp.ClientSession() as session:
         sms = Client(
             session,
-            "https://api.smsbox.pro",
-            "pub-xxxxx-xxxxx-xxxx-xxxx-xxxxx-xxxxxxxx",
+            SMSBOX_HOST,
+            SMSBOX_API_KEY,
         )
         with pytest.raises(exceptions.BillingException):
             await sms.send(
-                "9999001",
-                "Test d'un message ! En plus il va être envoyé.",
-                "expert",
-                {"strategy": "2"},
+                SMS_RECIPIENT,
+                SMS_MSG,
+                SEND_MODE,
+                {"strategy": SMSBOX_STRATEGY},
             )
             await session.close()
 
@@ -102,15 +111,15 @@ async def test_bad_dest(aresponses):
     async with aiohttp.ClientSession() as session:
         sms = Client(
             session,
-            "https://api.smsbox.pro",
-            "pub-xxxxx-xxxxx-xxxx-xxxx-xxxxx-xxxxxxxx",
+            SMSBOX_HOST,
+            SMSBOX_API_KEY,
         )
         with pytest.raises(exceptions.WrongRecipientException):
             await sms.send(
-                "9999001",
-                "Test d'un message ! En plus il va être envoyé.",
-                "expert",
-                {"strategy": "2"},
+                SMS_RECIPIENT,
+                SMS_MSG,
+                SEND_MODE,
+                {"strategy": SMSBOX_STRATEGY},
             )
             await session.close()
 
@@ -130,15 +139,15 @@ async def test_internal_error(aresponses):
     async with aiohttp.ClientSession() as session:
         sms = Client(
             session,
-            "https://api.smsbox.pro",
-            "pub-xxxxx-xxxxx-xxxx-xxxx-xxxxx-xxxxxxxx",
+            SMSBOX_HOST,
+            SMSBOX_API_KEY,
         )
         with pytest.raises(exceptions.InternalErrorException):
             await sms.send(
-                "9999001",
-                "Test d'un message ! En plus il va être envoyé.",
-                "expert",
-                {"strategy": "2"},
+                SMS_RECIPIENT,
+                SMS_MSG,
+                SEND_MODE,
+                {"strategy": SMSBOX_STRATEGY},
             )
             await session.close()
 
@@ -158,15 +167,15 @@ async def test_other_error(aresponses):
     async with aiohttp.ClientSession() as session:
         sms = Client(
             session,
-            "https://api.smsbox.pro",
-            "pub-xxxxx-xxxxx-xxxx-xxxx-xxxxx-xxxxxxxx",
+            SMSBOX_HOST,
+            SMSBOX_API_KEY,
         )
         with pytest.raises(exceptions.SMSBoxException):
             await sms.send(
-                "9999001",
-                "Test d'un message ! En plus il va être envoyé.",
-                "expert",
-                {"strategy": "2"},
+                SMS_RECIPIENT,
+                SMS_MSG,
+                SEND_MODE,
+                {"strategy": SMSBOX_STRATEGY},
             )
             await session.close()
 
@@ -186,14 +195,14 @@ async def test_http_error(aresponses):
     async with aiohttp.ClientSession() as session:
         sms = Client(
             session,
-            "https://api.smsbox.pro",
-            "pub-xxxxx-xxxxx-xxxx-xxxx-xxxxx-xxxxxxxx",
+            SMSBOX_HOST,
+            SMSBOX_API_KEY,
         )
         with pytest.raises(exceptions.HTTPException):
             await sms.send(
-                "9999001",
-                "Test d'un message ! En plus il va être envoyé.",
-                "expert",
-                {"strategy": "2"},
+                SMS_RECIPIENT,
+                SMS_MSG,
+                SEND_MODE,
+                {"strategy": SMSBOX_STRATEGY},
             )
             await session.close()
