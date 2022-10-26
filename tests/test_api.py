@@ -1,7 +1,4 @@
-"""Tests for pysmsboxnet"""
-
-import asyncio
-from unittest.mock import patch
+"""Tests for pysmsboxnet."""
 
 import aiohttp
 import pytest
@@ -12,6 +9,7 @@ from pysmsboxnet.api import Client
 
 @pytest.mark.asyncio
 async def test_parameters_error(aresponses):
+    """Test if exception is raised if web server returns ERROR 01."""
     aresponses.add(
         "api.smsbox.pro",
         "/1.1/api.php",
@@ -35,6 +33,7 @@ async def test_parameters_error(aresponses):
 
 @pytest.mark.asyncio
 async def test_bad_auth(aresponses):
+    """Test if exception is raised in case of wrong authentication ERROR 02."""
     aresponses.add(
         "api.smsbox.pro",
         "/1.1/api.php",
@@ -62,6 +61,7 @@ async def test_bad_auth(aresponses):
 
 @pytest.mark.asyncio
 async def test_billing(aresponses):
+    """Test if BillingException is raised in case of ERROR 03."""
     aresponses.add(
         "api.smsbox.pro",
         "/1.1/api.php",
@@ -89,6 +89,7 @@ async def test_billing(aresponses):
 
 @pytest.mark.asyncio
 async def test_bad_dest(aresponses):
+    """Test if WrongRecipientException is raised on ERROR 04."""
     aresponses.add(
         "api.smsbox.pro",
         "/1.1/api.php",
@@ -116,6 +117,7 @@ async def test_bad_dest(aresponses):
 
 @pytest.mark.asyncio
 async def test_internal_error(aresponses):
+    """Test if right exception is raised on ERROR 05."""
     aresponses.add(
         "api.smsbox.pro",
         "/1.1/api.php",
@@ -143,6 +145,7 @@ async def test_internal_error(aresponses):
 
 @pytest.mark.asyncio
 async def test_other_error(aresponses):
+    """Test unknown error."""
     aresponses.add(
         "api.smsbox.pro",
         "/1.1/api.php",
@@ -170,6 +173,7 @@ async def test_other_error(aresponses):
 
 @pytest.mark.asyncio
 async def test_http_error(aresponses):
+    """Test if HTTP status is not 200."""
     aresponses.add(
         "api.smsbox.pro",
         "/1.1/api.php",
