@@ -1,8 +1,8 @@
-aiohttp==3.8.3
-aresponses==2.1.6
+aiohttp>=3.6.1,<4.0
+aresponses
 async-timeout==4.0.2
 black==22.10.0
 isort==5.10.1
 pre-commit==2.20.0
 pytest==7.2.0
-pytest-asyncio==0.20.1
+pytest-asyncio
