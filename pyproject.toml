@@ -1,2 +1,6 @@
+[tool.black]
+target-version = ["py39", "py310"]
+exclude = 'generated'
+
 [tool.isort]
 profile = "black"
