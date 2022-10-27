@@ -1,3 +1,5 @@
+"""smsbox.net api client module."""
+
 import asyncio
 
 from aiohttp import ClientSession
@@ -9,14 +11,12 @@ from . import exceptions
 class Client:
     """API client class."""
 
-    def __init__(
-        self, webSession: ClientSession, host: str, cleApi: str, defaultTimeout=30
-    ):
+    def __init__(self, session: ClientSession, host: str, cleApi: str, timeout=30):
         """Initialize the SMS."""
         self.host = host
         self.cleApi = cleApi
-        self.session = webSession
-        self.timeout = defaultTimeout
+        self.session = session
+        self.timeout = timeout
 
     async def send(self, dest: str, msg: str, mode: str, parameters: dict):
         """Send a SMS."""

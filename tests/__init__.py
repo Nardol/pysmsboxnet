@@ -1,1 +1,1 @@
-"""Tests for pysmsbox library"""
+"""Tests for pysmsbox library."""

@@ -1,1 +1,1 @@
-""" Python library to use smsbox.net API """
+"""Python library to use smsbox.net API."""
