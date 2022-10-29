@@ -6,7 +6,7 @@ codespell==v2.1.0
 flake8==4.0.1
 flake8-comprehensions==3.10.0
 flake8-docstrings==1.6.0
-flake8-noqa==1.2.8
+flake8-noqa==1.2.9
 isort==5.10.1
 mccabe==0.6.1
 pre-commit==2.20.0
