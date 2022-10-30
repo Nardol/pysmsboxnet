@@ -22,6 +22,8 @@ jobs:
         id: python
         with:
           python-version: 3.x
+          cache: pip
+          check-latest: true
 
       - name: 📦 Install dependencies
         run: pip3 install -r requirements.txt
@@ -30,6 +32,14 @@ jobs:
         run: black pysmsboxnet tests --check
       - name: 🖤 Lint with Flake8
         run: flake8 pysmsboxnet tests
+      - name: Pre-commit cache
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pre-commit
+          key: "${{ runner.os }}-pc-${{ hashFiles('.pre-commit-config.yaml') }}"
+          restore-keys: |
+            ${{ runner.os }}-pre-commit-
+
       - name: "Run pre-commits"
         run: pre-commit run --all-files
 
@@ -48,6 +58,8 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
+          cache: pip
+          check-latest: true
 
       - name: 📦 Install dependencies
         run: pip3 install -r requirements.txt
