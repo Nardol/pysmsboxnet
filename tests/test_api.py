@@ -1,5 +1,7 @@
 """Tests for pysmsboxnet."""
 
+import random
+
 import aiohttp
 import pytest
 
@@ -205,3 +207,61 @@ async def test_http_error(aresponses):
                 {"strategy": SMSBOX_STRATEGY},
             )
             await session.close()
+
+
+@pytest.mark.asyncio
+async def test_ok(aresponses):
+    """Test result OK without ID."""
+    aresponses.add(
+        "api.smsbox.pro",
+        "/1.1/api.php",
+        "post",
+        aresponses.Response(
+            text="OK",
+            status=200,
+        ),
+    )
+    async with aiohttp.ClientSession() as session:
+        sms = Client(
+            session,
+            SMSBOX_HOST,
+            SMSBOX_API_KEY,
+        )
+        result = await sms.send(
+            SMS_RECIPIENT,
+            SMS_MSG,
+            SEND_MODE,
+            {"strategy": SMSBOX_STRATEGY},
+        )
+        assert "0" == result
+        await session.close()
+
+
+@pytest.mark.asyncio
+async def test_ok_with_id(aresponses):
+    """Test result OK with a random ID."""
+    # Get a random integer which will serv as the message ID
+    MSG_ID = str(random.randint(100000000000, 999999999999))
+    aresponses.add(
+        "api.smsbox.pro",
+        "/1.1/api.php",
+        "post",
+        aresponses.Response(
+            text=f"OK {MSG_ID}",
+            status=200,
+        ),
+    )
+    async with aiohttp.ClientSession() as session:
+        sms = Client(
+            session,
+            SMSBOX_HOST,
+            SMSBOX_API_KEY,
+        )
+        result = await sms.send(
+            SMS_RECIPIENT,
+            SMS_MSG,
+            SEND_MODE,
+            {"strategy": SMSBOX_STRATEGY, "id": "1"},
+        )
+        assert MSG_ID == result
+        await session.close()

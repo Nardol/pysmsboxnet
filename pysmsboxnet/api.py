@@ -53,6 +53,11 @@ class Client:
                     raise exceptions.WrongRecipientException
                 elif respText == "ERROR 05":
                     raise exceptions.InternalErrorException
+                elif respText[:2] == "OK":
+                    respOK = respText.split(" ")
+                    if len(respOK) == 1:
+                        return "0"
+                    return respOK[1]
         except asyncio.TimeoutError as exception:
             raise exceptions.SMSBoxException(
                 f"Timeout of {self.timeout} seconds was "
