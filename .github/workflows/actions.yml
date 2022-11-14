@@ -66,3 +66,45 @@ jobs:
 
       - name: 🏃 Run tests
         run: pytest tests
+
+  test_install:
+    name: Test installing  with Python ${{ matrix.python-version }}
+    needs: test
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.8, 3.9, "3.10"]
+    steps:
+      - name: 📥 Checkout the repository
+        uses: actions/checkout@v3.1.0
+
+      - name: 🛠️ Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4.3.0
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+          check-latest: true
+
+      - name: Install using pip
+        run: pip3 install -e .
+
+  test_build:
+    name: Test building  with Python 3
+    needs: test_install
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout the repository
+        uses: actions/checkout@v3.1.0
+
+      - name: 🛠️ Set up Python 3
+        uses: actions/setup-python@v4.3.0
+        with:
+          python-version: 3.x
+          cache: pip
+          check-latest: true
+
+      - name: Install build
+        run: pip3 install build
+
+      - name: Run build
+        run: python3 -m build
