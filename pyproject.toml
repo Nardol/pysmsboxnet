@@ -1,10 +1,10 @@
 [build-system]
-requires = ["setuptools==63.2.0","wheel==0.38.4"]
+requires = ["setuptools==63.2.0","wheel==0.38.4","setuptools_scm[toml]==7.0.5",]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "pysmsboxnet"
-version = "1.0A2"
+dynamic=["version"]
 authors = [
     {name = "Patrick ZAJDA", email = "patrick@zajda.fr"}
 ]
