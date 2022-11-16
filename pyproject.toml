@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools==63.2.0","wheel==0.38.4","setuptools_scm[toml]==7.0.5",]
+requires = ["setuptools==63.2.0","wheel==0.38.4","setuptools-git-versioning==1.13.1",]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -52,3 +52,6 @@ exclude = 'generated'
 
 [tool.isort]
 profile = "black"
+
+[tool.setuptools-git-versioning]
+enabled = true
