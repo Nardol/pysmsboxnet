@@ -86,7 +86,12 @@ jobs:
           check-latest: true
 
       - name: Install using pip
-        run: pip3 install -e .
+        run: pip3 install .
+
+      - name: Try example
+        env:
+          SMSBOX_API_KEY: ${{ secrets.SMSBOX_API_KEY }}
+        run: python3 example.py
 
   test_build:
     name: Test building  with Python 3
