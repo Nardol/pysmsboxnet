@@ -44,7 +44,8 @@ zip-safe  = false
 include-package-data = true
 
 [tool.setuptools.packages.find]
-include = ["pysmsboxnet"]
+include = ["pysmsboxnet*"]
+namespaces = false
 
 [tool.black]
 target-version = ["py39", "py310"]
