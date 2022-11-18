@@ -24,7 +24,7 @@ async def main():
 
 # Get API key from environment variable
 API_KEY = getenv("SMSBOX_API_KEY", "nokey")
-SMS_RECIPIENT = "9999001"
+SMS_RECIPIENT = "9990001"
 
 if API_KEY == "nokey":
     print("No key specified, exiting")
