@@ -88,16 +88,16 @@ jobs:
       - name: Install using pip
         run: pip3 install .
 
-      - name: Try example in /tmp
-        env:
-          SMSBOX_API_KEY: ${{ secrets.SMSBOX_API_KEY }}
-        run: |
-          mkdir -p /tmp/test_example
-          cp example.py /tmp/test_example
-          cd /tmp/test_example
-          python3 /tmp/test_example/example.py
-          cd -
-          rm -rf /tmp/test_example
+      #- name: Try example in /tmp
+      #env:
+      #SMSBOX_API_KEY: ${{ secrets.SMSBOX_API_KEY }}
+      #run: |
+      #mkdir -p /tmp/test_example
+      #cp example.py /tmp/test_example
+      #cd /tmp/test_example
+      #python3 /tmp/test_example/example.py
+      #cd -
+      #rm -rf /tmp/test_example
 
   test_build:
     name: Test building  with Python 3
