@@ -18,24 +18,17 @@ class Client:
         self.session = session
         self.timeout = timeout
 
-    async def send(self, dest: str, msg: str, mode: str, parameters: dict):
-        """Send a SMS."""
+    async def __smsbox_request(self, uri: str, parameters: dict):
+        """Send a request to the API."""
         headers = {
             "authorization": f"App {self.cleApi}",
         }
-        postData = {
-            "dest": dest,
-            "msg": msg,
-            "mode": mode,
-            "charset": "utf-8",
-        }
-        postData.update(parameters)
 
         try:
             async with self.session.post(
-                url=f"{self.host}/1.1/api.php",
+                url=f"{self.host}/{uri}",
                 headers=headers,
-                data=postData,
+                data=parameters,
                 timeout=ClientTimeout(total=self.timeout),
             ) as resp:
                 if resp.status != 200:
@@ -53,13 +46,28 @@ class Client:
                     raise exceptions.WrongRecipientException
                 elif respText == "ERROR 05":
                     raise exceptions.InternalErrorException
-                elif respText[:2] == "OK":
-                    respOK = respText.split(" ")
-                    if len(respOK) == 1:
-                        return "0"
-                    return respOK[1]
+                else:
+                    return respText
         except asyncio.TimeoutError as exception:
             raise exceptions.SMSBoxException(
                 f"Timeout of {self.timeout} seconds was "
                 f"reached while sending the SMS"
             ) from exception
+
+    async def send(self, dest: str, msg: str, mode: str, parameters: dict):
+        """Send a SMS."""
+        postData = {
+            "dest": dest,
+            "msg": msg,
+            "mode": mode,
+            "charset": "utf-8",
+        }
+        postData.update(parameters)
+
+        respText = await self.__smsbox_request("1.1/api.php", postData)
+
+        if respText.startswith("OK"):
+            respOK = respText.split(" ")
+            if len(respOK) == 1:
+                return "0"
+            return respOK[1]
