@@ -82,6 +82,6 @@ class Client:
 
         respText = await self.__smsbox_request("api.php", postData)
         if respText.startswith("CREDIT"):
-            return respText.split(" ")[1]
+            return float(respText.split(" ")[1])
         else:
             raise exceptions.SMSBoxException(respText)

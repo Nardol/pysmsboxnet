@@ -271,7 +271,7 @@ async def test_ok_with_id(aresponses):
 async def test_credits(aresponses):
     """Test credits async property returning a random number."""
     # Get a random float which will serv as the number of credits
-    CREDITS = str(round(random.uniform(0, 9999), 1))
+    CREDITS = round(random.uniform(0, 9999), 1)
     aresponses.add(
         "api.smsbox.pro",
         "/api.php",
