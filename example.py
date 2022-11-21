@@ -13,12 +13,17 @@ async def main():
         sms = Client(session, "https://api.smsbox.pro", API_KEY)
 
         try:
-            msgID = await sms.send(
-                SMS_RECIPIENT, "Test message.", "expert", {"strategy": "2", "id": "1"}
-            )
-            print(f"SMS sent, ID : {msgID}")
+            # msgID = await sms.send(
+            #     SMS_RECIPIENT, "Test message.", "expert", {"strategy": "2", "id": "1"}
+            # )
+            # print(f"SMS sent, ID : {msgID}")
+            credits = await sms.credits
+            if credits > 0:
+                print("There are remaining credits")
+            else:
+                print("No remaining credit")
         except exceptions.SMSBoxException as e:
-            print(f"As expected, exception: {e}")
+            print(f"Exception: {e}")
             await session.close()
 
 
