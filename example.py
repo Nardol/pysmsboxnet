@@ -10,7 +10,7 @@ from pysmsboxnet.api import Client
 
 async def main():
     async with aiohttp.ClientSession() as session:
-        sms = Client(session, "https://api.smsbox.pro", API_KEY)
+        sms = Client(session, "api.smsbox.pro", API_KEY)
 
         try:
             # To send a message
