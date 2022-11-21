@@ -19,7 +19,7 @@ class Client:
         self.session = session
         self.timeout = timeout
 
-    async def __smsbox_request(self, uri: str, parameters: dict):
+    async def __smsbox_request(self, uri: str, parameters: dict) -> str:
         """Send a request to the API."""
         headers = {
             "authorization": f"App {self.cleApi}",
@@ -55,7 +55,7 @@ class Client:
                 f"reached while sending the SMS"
             ) from exception
 
-    async def send(self, dest: str, msg: str, mode: str, parameters: dict):
+    async def send(self, dest: str, msg: str, mode: str, parameters: dict) -> int:
         """Send a SMS."""
         postData = {
             "dest": dest,
@@ -70,8 +70,8 @@ class Client:
         if respText.startswith("OK"):
             respOK = respText.split(" ")
             if len(respOK) == 1:
-                return "0"
-            return respOK[1]
+                return 0
+            return int(respOK[1])
 
     @async_property
     async def credits(self):

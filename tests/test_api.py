@@ -233,7 +233,7 @@ async def test_ok(aresponses):
             SEND_MODE,
             {"strategy": SMSBOX_STRATEGY},
         )
-        assert "0" == result
+        assert 0 == result
         await session.close()
 
 
@@ -241,7 +241,7 @@ async def test_ok(aresponses):
 async def test_ok_with_id(aresponses):
     """Test result OK with a random ID."""
     # Get a random integer which will serv as the message ID
-    MSG_ID = str(random.randint(100000000000, 999999999999))
+    MSG_ID = random.randint(100000000000, 999999999999)
     aresponses.add(
         "api.smsbox.pro",
         "/1.1/api.php",
