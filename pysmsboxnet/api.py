@@ -27,7 +27,7 @@ class Client:
 
         try:
             async with self.session.post(
-                url=f"{self.host}/{uri}",
+                url=f"https://{self.host}/{uri}",
                 headers=headers,
                 data=parameters,
                 timeout=ClientTimeout(total=self.timeout),

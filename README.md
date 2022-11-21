@@ -13,7 +13,7 @@ The `pysmsboxnet.net.api.Client` has the following methods:
 
 - Constructor which takes the following arguments:
   - session: an instance of aiohttp.ClientSession
-  - host (str): the SMSBox API endpoint I.E. `https://api.smsbox.pro`
+  - host (str): the SMSBox API endpoint I.E. `api.smsbox.pro` (without http(s):// because https is forced)
   - cleApi (str): your smsbox.net API key, [see API documentation](https://en.smsbox.net/docs/doc-API-SMSBOX-1.1-EN.html); name is in French to reflect API documentation
   - timeout (int, optional, default 30
 - Send (return int: 0 or ID of sent SMS if applicable)

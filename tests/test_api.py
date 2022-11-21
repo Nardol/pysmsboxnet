@@ -9,7 +9,7 @@ from pysmsboxnet import exceptions
 from pysmsboxnet.api import Client
 
 # Constents
-SMSBOX_HOST = "https://api.smsbox.pro"
+SMSBOX_HOST = "api.smsbox.pro"
 SMSBOX_API_KEY = "pub-xxxxx-xxxxx-xxxx-xxxx-xxxxx-xxxxxxxx"
 SMS_RECIPIENT = "9999001"
 SMS_MSG = "Test d'un message ! En plus il va être envoyé."
