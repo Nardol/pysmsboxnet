@@ -13,11 +13,22 @@ async def main():
         sms = Client(session, "https://api.smsbox.pro", API_KEY)
 
         try:
+            # To send a message
+            # we define the strategy in the dict passed as last parameter
+            # In this dict, we also ask the API to return the ID of message sent
+            # With the parameter id set to 1
+            # If we don't set id, the send function will return 0
+            # In case of failure an exception will be thrown
+            # It is commented, delete the # character and the following space on each line to uncomment it
             # msgID = await sms.send(
             #     SMS_RECIPIENT, "Test message.", "expert", {"strategy": "2", "id": "1"}
             # )
+            # We display the message is sent and its ID
             # print(f"SMS sent, ID : {msgID}")
+
+            # We get remaining credits
             credits = await sms.credits
+            # print(f"Remaining credits: {credits}")
             if credits > 0:
                 print("There are remaining credits")
             else:
