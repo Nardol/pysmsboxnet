@@ -1,0 +1,33 @@
+name: Release
+
+on:
+  release:
+    types: ["published"]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    name: Deploy to PyPi
+    steps:
+      - name: 📥 Checkout the repository
+        uses: actions/checkout@v3.1.0
+
+      - name: 🛠 Set up Python3
+        uses: actions/setup-python@v4.3.0
+        id: python
+        with:
+          python-version: 3.x
+          cache: pip
+          check-latest: true
+
+      - name: 📦 Install dependencies
+        run: |
+          python3 -m pip install build twine
+
+      - name: 🚀 Publish to PyPi
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
+        run: |
+          python -m build
+          twine upload dist/*
