@@ -4,6 +4,7 @@ import asyncio
 
 from aiohttp import ClientSession
 from aiohttp.client import ClientTimeout
+from async_property import async_property
 
 from . import exceptions
 
@@ -71,3 +72,16 @@ class Client:
             if len(respOK) == 1:
                 return "0"
             return respOK[1]
+
+    @async_property
+    async def credits(self):
+        """Return number of credits."""
+        postData = {
+            "action": "credit",
+        }
+
+        respText = await self.__smsbox_request("api.php", postData)
+        if respText.startswith("CREDIT"):
+            return float(respText.split(" ")[1])
+        else:
+            raise exceptions.SMSBoxException(respText)

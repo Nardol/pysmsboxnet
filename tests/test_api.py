@@ -265,3 +265,28 @@ async def test_ok_with_id(aresponses):
         )
         assert MSG_ID == result
         await session.close()
+
+
+@pytest.mark.asyncio
+async def test_credits(aresponses):
+    """Test credits async property returning a random number."""
+    # Get a random float which will serv as the number of credits
+    CREDITS = round(random.uniform(0, 9999), 1)
+    aresponses.add(
+        "api.smsbox.pro",
+        "/api.php",
+        "post",
+        aresponses.Response(
+            text=f"CREDIT {CREDITS}",
+            status=200,
+        ),
+    )
+    async with aiohttp.ClientSession() as session:
+        sms = Client(
+            session,
+            SMSBOX_HOST,
+            SMSBOX_API_KEY,
+        )
+        result = await sms.credits
+        assert CREDITS == result
+        await session.close()
