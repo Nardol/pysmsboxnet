@@ -74,7 +74,7 @@ class Client:
             return int(respOK[1])
 
     @async_property
-    async def credits(self):
+    async def credits(self) -> float:
         """Return number of credits."""
         postData = {
             "action": "credit",
