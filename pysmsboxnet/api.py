@@ -12,7 +12,9 @@ from . import exceptions
 class Client:
     """API client class."""
 
-    def __init__(self, session: ClientSession, host: str, cleApi: str, timeout=30):
+    def __init__(
+        self, session: ClientSession, host: str, cleApi: str, timeout: int = 30
+    ):
         """Initialize the SMS."""
         self.host = host
         self.cleApi = cleApi

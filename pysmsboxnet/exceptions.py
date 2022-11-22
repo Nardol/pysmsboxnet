@@ -4,7 +4,7 @@
 class SMSBoxException(BaseException):
     """Base exception for SMSBox API."""
 
-    def __init__(self, message="Unknown API error"):
+    def __init__(self, message: str = "Unknown API error"):
         """Initialize SMSBox base exception.
 
         An optional message can be specified.
@@ -58,6 +58,6 @@ class InternalErrorException(SMSBoxException):
 class HTTPException(SMSBoxException):
     """Exception when API returns ERROR 03."""
 
-    def __init__(self, errorCode):
+    def __init__(self, errorCode: int):
         """Initialize HTTP error Exception."""
         super().__init__(f"HTTP error ({errorCode})")
