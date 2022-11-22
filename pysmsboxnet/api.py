@@ -55,7 +55,7 @@ class Client:
                 f"reached while sending the SMS"
             ) from exception
 
-    async def send(self, dest: str, msg: str, mode: str, parameters: dict) -> int:
+    async def send(self, dest: str, msg: str, mode: str, parameters: dict = []) -> int:
         """Send a SMS."""
         postData = {
             "dest": dest,
