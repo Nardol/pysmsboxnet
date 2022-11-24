@@ -32,7 +32,7 @@ class AuthException(SMSBoxException):
 
 
 class BillingException(SMSBoxException):
-    """xception when API returns ERROR 03."""
+    """Exception when API returns ERROR 03."""
 
     def __init__(self):
         """Initialize when no enough SMS credits, no message to specify."""
