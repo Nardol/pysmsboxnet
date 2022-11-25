@@ -1,12 +1,2 @@
 aiohttp>=3.8.0,<4.0
-aresponses==2.1.6
 async-property==0.2.1
-black==22.10.0
-codespell==v2.1.0
-coverage==6.5.0
-flake8==5.0.4
-isort==5.10.1
-pre-commit==2.20.0
-pytest==7.2.0
-pytest-asyncio==0.20.2
-pytest-cov==4.0.0
