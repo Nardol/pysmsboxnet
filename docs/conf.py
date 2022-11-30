@@ -17,6 +17,7 @@ copyright = "2022, Patrick ZAJDA"
 author = "Patrick ZAJDA"
 try:
     version = version("pysmsboxnet")
+    print(version)
 except PackageNotFoundError:
     pass
 

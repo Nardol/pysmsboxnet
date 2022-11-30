@@ -33,6 +33,7 @@ jobs:
       - name: Get version
         id: get-version
         run: |
+          setuptools-git-versioning
           echo "VERSION=$(setuptools-git-versioning)" >> $GITHUB_OUTPUT
 
       - name: Build documentation using sphinx
