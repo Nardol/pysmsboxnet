@@ -1,0 +1,69 @@
+name: "Release doc"
+
+on:
+  workflow_dispatch:
+  release:
+    types: ["published"]
+
+permissions:
+  contents: write
+
+jobs:
+  build_release_doc:
+    runs-on: ubuntu-latest
+    name: Build and deploydocumentation
+    needs: deploy
+    steps:
+      - name: 📥 Checkout the repository
+        uses: actions/checkout@v3.1.0
+
+      - name: 🛠 Set up Python3
+        uses: actions/setup-python@v4.3.0
+        id: python
+        with:
+          python-version: 3.x
+          cache: pip
+          check-latest: true
+
+      - name: 📦 Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip3 install -r requirements.txt -r requirements_doc.txt
+
+      - name: Get version
+        id: get-version
+        run: |
+          echo "VERSION=$(setuptools-git-versioning)" >> $GITHUB_OUTPUT
+
+      - name: Build documentation using sphinx
+        run: |
+          (cd docs
+          make html)
+
+      - name: deploy documentation
+        uses: JamesIves/github-pages-deploy-action@v4.4.1
+        with:
+          folder: docs/html
+          target-folder: /${{ steps.get-version.outputs.VERSION }}
+
+      - name: "Generate index.html"
+        run: |
+          mkdir tmpindex
+          RELEASE="${{ steps.get-version.outputs.VERSION }}"
+          echo'<html>
+          <head>
+          <title>Redirecting</title>
+          </head>
+          <body>
+          Redirecting to
+          <a href="${RELEASE}/">
+          last stable version documentation
+          </a>
+          <meta http-equiv="refresh" content="1;URL=${STABLE}/">
+          </body>
+          </html>' > tmpindex/index.html
+
+      - name: deploy updated index
+        uses: JamesIves/github-pages-deploy-action@v4.4.1
+        with:
+          folder: tmpindex
