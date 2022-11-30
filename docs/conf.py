@@ -2,7 +2,8 @@ import os
 import sys
 from importlib.metadata import PackageNotFoundError, version
 
-sys.path.insert(0, os.path.abspath("../"))
+sys.path.insert(0, os.path.abspath("."))
+sys.path.insert(0, os.path.abspath(".."))
 
 # Configuration file for the Sphinx documentation builder.
 #
@@ -19,7 +20,8 @@ try:
     version = version("pysmsboxnet")
     print(version)
 except PackageNotFoundError:
-    pass
+    print("Package pysmsboxnet not found")
+    # pass
 
 
 # -- General configuration ---------------------------------------------------
