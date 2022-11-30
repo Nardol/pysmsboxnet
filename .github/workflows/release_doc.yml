@@ -33,11 +33,10 @@ jobs:
       - name: Get version
         id: get-version
         run: |
-          setuptools-git-versioning
           echo "VERSION=$(setuptools-git-versioning)" >> $GITHUB_OUTPUT
 
       - name: Build documentation using sphinx
-        run: make -C docs html
+        run: PYTHONPATH=. make -C docs html
 
       - name: deploy documentation
         uses: JamesIves/github-pages-deploy-action@v4.4.1
