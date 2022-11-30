@@ -13,7 +13,6 @@ jobs:
   build_release_doc:
     runs-on: ubuntu-latest
     name: Build and deploydocumentation
-    needs: deploy
     steps:
       - name: 📥 Checkout the repository
         uses: actions/checkout@v3.1.0
