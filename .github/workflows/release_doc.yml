@@ -43,24 +43,24 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4.4.1
         with:
           folder: docs/_build/html
-          target-folder: /${{ steps.get-version.outputs.VERSION }}
+          target-folder: ${{ steps.get-version.outputs.VERSION }}
 
       - name: "Generate index.html"
         run: |
           mkdir tmpindex
           RELEASE="${{ steps.get-version.outputs.VERSION }}"
-          echo '<html>
+          echo "<html>
           <head>
           <title>Redirecting</title>
           </head>
           <body>
           Redirecting to
-          <a href="${RELEASE}/">
+          <a href=\"${RELEASE}/\">
           last stable version documentation
           </a>
-          <meta http-equiv="refresh" content="1;URL=${STABLE}/">
+          <meta http-equiv=\"refresh\" content=\"1;URL=${RELEASE}/\">
           </body>
-          </html>' > tmpindex/index.html
+          </html>" > tmpindex/index.html
 
       - name: deploy updated index
         uses: JamesIves/github-pages-deploy-action@v4.4.1
