@@ -28,7 +28,8 @@ jobs:
       - name: 📦 Install dependencies
         run: |
           pip3 install --upgrade pip
-          pip3 install -r requirements.txt -r requirements_doc.txt
+          pip3 install -r requirements_doc.txt
+          pip3 install -e .
 
       - name: Get version
         id: get-version
@@ -36,7 +37,7 @@ jobs:
           echo "VERSION=$(setuptools-git-versioning)" >> $GITHUB_OUTPUT
 
       - name: Build documentation using sphinx
-        run: PYTHONPATH=. make -C docs html
+        run: make -C docs html
 
       - name: deploy documentation
         uses: JamesIves/github-pages-deploy-action@v4.4.1
