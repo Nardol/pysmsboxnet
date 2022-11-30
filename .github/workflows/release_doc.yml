@@ -22,7 +22,7 @@ jobs:
         id: python
         with:
           python-version: "3.10"
-          cache: pip
+          # cache: pip
           check-latest: true
 
       - name: 📦 Install dependencies
@@ -36,10 +36,7 @@ jobs:
           echo "VERSION=$(setuptools-git-versioning)" >> $GITHUB_OUTPUT
 
       - name: Build documentation using sphinx
-        run: |
-          cd docs
-          make html
-          cd ..
+        run: make -C docs html
 
       - name: deploy documentation
         uses: JamesIves/github-pages-deploy-action@v4.4.1
