@@ -27,7 +27,7 @@ jobs:
 
       - name: 📦 Install dependencies
         run: |
-          pip install --upgrade pip
+          pip3 install --upgrade pip
           pip3 install -r requirements.txt -r requirements_doc.txt
 
       - name: Get version
@@ -37,13 +37,14 @@ jobs:
 
       - name: Build documentation using sphinx
         run: |
-          (cd docs
-          make html)
+          cd docs
+          make html
+          cd ..
 
       - name: deploy documentation
         uses: JamesIves/github-pages-deploy-action@v4.4.1
         with:
-          folder: docs/html
+          folder: docs/_build/html
           target-folder: /${{ steps.get-version.outputs.VERSION }}
 
       - name: "Generate index.html"
