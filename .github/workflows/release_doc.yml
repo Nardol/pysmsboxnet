@@ -49,7 +49,7 @@ jobs:
         run: |
           mkdir tmpindex
           RELEASE="${{ steps.get-version.outputs.VERSION }}"
-          echo'<html>
+          echo '<html>
           <head>
           <title>Redirecting</title>
           </head>
