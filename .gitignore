@@ -1,4 +1,4 @@
-*dist
+dist
 docs
 pysmsboxnet
 pysmsboxnet.egg-info
@@ -6,3 +6,4 @@ tests
 venv
 venv_*
 .python-version
+.pytest_cache
