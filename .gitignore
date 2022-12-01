@@ -1,0 +1,8 @@
+*dist
+docs
+pysmsboxnet
+pysmsboxnet.egg-info
+tests
+venv
+venv_*
+.python-version
