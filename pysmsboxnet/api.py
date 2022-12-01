@@ -10,7 +10,13 @@ from . import exceptions
 
 
 class Client:
-    """API client class."""
+    """API client class.
+
+    :param aiohttp.ClientSession session: the aiohttp session to use
+    :param str host: the API endpoint host, for example api.smsbox.pro (https is forced)
+    :param str cleApi: the SMSBox API key, name is in French to reflect the documentation
+    :param int timeout: timeout delay, default to 30 seconds
+    """
 
     def __init__(
         self, session: ClientSession, host: str, cleApi: str, timeout: int = 30
@@ -22,7 +28,22 @@ class Client:
         self.timeout = timeout
 
     async def __smsbox_request(self, uri: str, parameters: dict) -> str:
-        """Send a request to the API."""
+        """Private method to send a request to the API.
+
+        :param str uri: the host API endpoint, for example api.php or 1.1/api.php
+        :param dict parameters: parameters to pass to the API
+
+        :returns: SMSBox API response
+        :rtype: str
+
+        :raises pysmsboxnet.exceptions.HTTPException: if HTTP status is not 200 OK
+        :raises pysmsboxnet.exceptions.SMSBoxException: SMSBox API returned ERROR or timeout occurred
+        :raises pysmsboxnet.exceptions.ParameterErrorException: bad parameters were passed to the API
+        :raises pysmsboxnet.exceptions.AuthException: bad API key has been specified
+        :raises pysmsboxnet.exceptions.BillingException: there are no enough credits to send the SMS
+        :raises pysmsboxnet.exceptions.WrongRecipientException: recipient format is wrong
+        :raises pysmsboxnet.exceptions.InternalErrorException: SMSBox API internal error
+        """
         headers = {
             "authorization": f"App {self.cleApi}",
         }
@@ -58,7 +79,16 @@ class Client:
             ) from exception
 
     async def send(self, dest: str, msg: str, mode: str, parameters: dict = []) -> int:
-        """Send a SMS."""
+        """Send a SMS.
+
+        :param str dest: SMS recipient(s), see API documentation about how to format
+        :param str msg: the SMS message
+        :param str mode: send mode,  mode API parameter
+        :param dict parameters: other API parameter as strategy or if other charset than UTF8 is needed
+
+        :returns: SMS ID if id parameter is set to 1 else 0
+        :rtype: int
+        """
         postData = {
             "dest": dest,
             "msg": msg,
@@ -77,7 +107,10 @@ class Client:
 
     @async_property
     async def credits(self) -> float:
-        """Return number of credits."""
+        """Return float number of credits.
+
+        :raises pysmsboxnet.exceptions.SMSBoxException: result is not OK
+        """
         postData = {
             "action": "credit",
         }
