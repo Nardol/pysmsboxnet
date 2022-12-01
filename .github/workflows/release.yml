@@ -36,6 +36,7 @@ jobs:
           twine upload dist/*
 
   deploy_doc:
+    if: "!github.event.release.prerelease"
     needs: deploy
     runs-on: ubuntu-latest
     name: Build and deploydocumentation
