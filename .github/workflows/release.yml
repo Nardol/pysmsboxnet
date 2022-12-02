@@ -89,7 +89,7 @@ jobs:
           <a href=\"../${RELEASE}/\">
           last stable version documentation
           </a>
-          <meta http-equiv=\"refresh\" content=\"1;URL=../${RELEASE}/\">
+          <meta http-equiv=\"refresh\" content=\"2;URL=../${RELEASE}/\">
           </body>
           </html>" > tmpindex/index.html
 
