@@ -1,4 +1,4 @@
-theme: cayman
+#theme: cayman
 include:
   - "dev/_static"
   - "*/_static"
