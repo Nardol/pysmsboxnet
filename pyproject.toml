@@ -39,6 +39,9 @@ dependencies = [
 [project.urls]
 "Source code" = "https://github.com/Nardol/pysmsboxnet"
 "Bug tracker" = "https://github.com/Nardol/pysmsboxnet/issues"
+"Documentation" = "https://nardol.github.io/pysmsboxnet/stable"
+"SMSBox API 1.1 documentation" = "https://en.smsbox.net/docs/doc-API-SMSBOX-1.1-EN.html"
+"SMSBox account management API documentation" = "https://en.smsbox.net/docs/doc-APIFunctions-SMSBOX-FR.html"
 
 [tool.setuptools]
 platforms = ["any"]
