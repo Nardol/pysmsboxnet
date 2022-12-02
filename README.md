@@ -6,22 +6,18 @@ You can also [download the documentation](https://en.smsbox.net/docs/doc-API-SMS
 Future version might allow to use other [account features](https://en.smsbox.net/docs/doc-APIFunctions-SMSBOX-FR.html), this doc is in French.
 The exception is the credits async property which allows getting remaining credits.
 
+## Installing
+
+You can install using pip.
+
 ## How to use
 
 See [example.py](/example.py).
-The `pysmsboxnet.net.api.Client` has the following methods:
+An example is also available in the documentation.
 
-- Constructor which takes the following arguments:
-  - session: an instance of aiohttp.ClientSession
-  - host (str): the SMSBox API endpoint I.E. `api.smsbox.pro` (without http(s):// because https is forced)
-  - cleApi (str): your smsbox.net API key, [see API documentation](https://en.smsbox.net/docs/doc-API-SMSBOX-1.1-EN.html); name is in French to reflect API documentation
-  - timeout (int, optional, default 30
-- Send (return int: 0 or ID of sent SMS if applicable)
-  - dest (str): the SMS recipient, see API documentation about how to format
-  - msg (str): your message
-  - mode (str): same as mode in the API documentation
-  - parameters (dict): to add other API parameters, for example the minimum to add is `strategy`
-- credits: async property which returns remaining credits as float
+## Documentation
 
-Exceptions are implemented and thrown: `pysmsboxnet.exceptions.ParameterErrorException`, `pysmsboxnet.exceptions.AuthException`, `pysmsboxnet.exceptions.BillingException`, `pysmsboxnet.exceptions.WrongRecipientException`, `pysmsboxnet.exceptions.InternalErrorException`, `pysmsboxnet.exceptions.HTTPException`.
-In case of an unknown exception, `pysmsboxnet.exceptions.SMSBoxException` is thrown.
+- [Latest stable version](https://nardol.github.io/pysmsboxnet/stable)
+- Future previous versions documentations will be available at `https://nardol.github.io/pysmsboxnet/yyyy.mm.n`
+- [Latest dev documentation](https://nardol.github.io/pysmsboxnet/dev)
+  It is updated each time something is pushed to the `main` branch.
