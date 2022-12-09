@@ -1,4 +1,4 @@
-black==22.10.0
+black==22.12.0
 codespell==v2.1.0
 flake8==6.0.0
 isort==5.10.1
