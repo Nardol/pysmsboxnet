@@ -50,7 +50,7 @@ jobs:
       - name: 🖤 Lint with Flake8
         run: flake8 pysmsboxnet tests
       - name: Pre-commit cache
-        uses: actions/cache@v3.2.1
+        uses: actions/cache@v3.2.2
         with:
           path: ~/.cache/pre-commit
           key: "${{ runner.os }}-pc-${{ hashFiles('.pre-commit-config.yaml') }}"
