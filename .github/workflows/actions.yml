@@ -26,6 +26,7 @@ jobs:
             docfiles:
               - 'pysmsboxnet/*.py'
               - 'docs/**'
+              - 'requirements_doc.txt'
 
   lint:
     name: Lint
