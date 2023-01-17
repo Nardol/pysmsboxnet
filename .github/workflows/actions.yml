@@ -87,7 +87,7 @@ jobs:
 
       - name: Run code coverage
         if: ${{ matrix.python-version == '3.10' }}
-        run: pytest --cov=. --cov-report=xml tests
+        run: pytest --cov=./pysmsboxnet --cov-report=xml tests
 
       - name: upload to codecov
         if: ${{ matrix.python-version == '3.10' }}
