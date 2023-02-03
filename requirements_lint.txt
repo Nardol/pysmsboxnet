@@ -2,4 +2,4 @@ black==23.1.0
 codespell==v2.1.0
 flake8==6.0.0
 isort==5.12.0
-pre-commit==3.0.2
+pre-commit==3.0.3
