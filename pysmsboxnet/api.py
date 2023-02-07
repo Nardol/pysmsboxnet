@@ -1,5 +1,7 @@
 """smsbox.net api client module."""
 
+from __future__ import annotations
+
 import asyncio
 
 from aiohttp import ClientSession
