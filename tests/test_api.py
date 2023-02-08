@@ -292,3 +292,49 @@ async def test_credits(aresponses):
         result = await sms.credits
         assert CREDITS == result
         await session.close()
+
+
+@pytest.mark.asyncio
+async def test_exception_credits(aresponses):
+    """Test get credits async property raising exception."""
+    aresponses.add(
+        "api.smsbox.pro",
+        "/api.php",
+        "post",
+        aresponses.Response(
+            text="ERROR 02",
+            status=200,
+        ),
+    )
+    async with aiohttp.ClientSession() as session:
+        sms = Client(
+            session,
+            SMSBOX_HOST,
+            SMSBOX_API_KEY,
+        )
+        with pytest.raises(exceptions.SMSBoxException):
+            await sms.credits
+            await session.close()
+
+
+@pytest.mark.asyncio
+async def test_error_credits(aresponses):
+    """Test get credits async property returning strange string."""
+    aresponses.add(
+        "api.smsbox.pro",
+        "/api.php",
+        "post",
+        aresponses.Response(
+            text="FFF",
+            status=200,
+        ),
+    )
+    async with aiohttp.ClientSession() as session:
+        sms = Client(
+            session,
+            SMSBOX_HOST,
+            SMSBOX_API_KEY,
+        )
+        with pytest.raises(exceptions.SMSBoxException):
+            await sms.credits
+            await session.close()
