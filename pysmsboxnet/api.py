@@ -2,10 +2,7 @@
 
 from __future__ import annotations
 
-import asyncio
-
 from aiohttp import ClientSession
-from aiohttp.client import ClientTimeout
 from async_property import async_property
 
 from . import exceptions
@@ -17,17 +14,13 @@ class Client:
     :param aiohttp.ClientSession session: the aiohttp session to use
     :param str host: the API endpoint host, for example api.smsbox.pro (https is forced)
     :param str cleApi: the SMSBox API key, name is in French to reflect the documentation
-    :param int timeout: timeout delay, default to 30 seconds
     """
 
-    def __init__(
-        self, session: ClientSession, host: str, cleApi: str, timeout: int = 30
-    ):
+    def __init__(self, session: ClientSession, host: str, cleApi: str):
         """Initialize the SMS."""
         self.host = host
         self.cleApi = cleApi
         self.session = session
-        self.timeout = timeout
 
     async def __smsbox_request(self, uri: str, parameters: dict) -> str:
         """Private method to send a request to the API.
@@ -39,7 +32,7 @@ class Client:
         :rtype: str
 
         :raises pysmsboxnet.exceptions.HTTPException: if HTTP status is not 200 OK
-        :raises pysmsboxnet.exceptions.SMSBoxException: SMSBox API returned ERROR or timeout occurred
+        :raises pysmsboxnet.exceptions.SMSBoxException: SMSBox API returned ERROR
         :raises pysmsboxnet.exceptions.ParameterErrorException: bad parameters were passed to the API
         :raises pysmsboxnet.exceptions.AuthException: bad API key has been specified
         :raises pysmsboxnet.exceptions.BillingException: there are no enough credits to send the SMS
@@ -50,35 +43,28 @@ class Client:
             "authorization": f"App {self.cleApi}",
         }
 
-        try:
-            async with self.session.post(
-                url=f"https://{self.host}/{uri}",
-                headers=headers,
-                data=parameters,
-                timeout=ClientTimeout(total=self.timeout),
-            ) as resp:
-                if resp.status != 200:
-                    raise exceptions.HTTPException(resp.status)
-                respText = await resp.text()
-                if respText == "ERROR":
-                    raise exceptions.SMSBoxException
-                elif respText == "ERROR 01":
-                    raise exceptions.ParameterErrorException
-                elif respText == "ERROR 02":
-                    raise exceptions.AuthException
-                elif respText == "ERROR 03":
-                    raise exceptions.BillingException
-                elif respText == "ERROR 04":
-                    raise exceptions.WrongRecipientException
-                elif respText == "ERROR 05":
-                    raise exceptions.InternalErrorException
-                else:
-                    return respText
-        except asyncio.TimeoutError as exception:
-            raise exceptions.SMSBoxException(
-                f"Timeout of {self.timeout} seconds was "
-                f"reached while sending the SMS"
-            ) from exception
+        async with self.session.post(
+            url=f"https://{self.host}/{uri}",
+            headers=headers,
+            data=parameters,
+        ) as resp:
+            if resp.status != 200:
+                raise exceptions.HTTPException(resp.status)
+            respText = await resp.text()
+            if respText == "ERROR":
+                raise exceptions.SMSBoxException
+            elif respText == "ERROR 01":
+                raise exceptions.ParameterErrorException
+            elif respText == "ERROR 02":
+                raise exceptions.AuthException
+            elif respText == "ERROR 03":
+                raise exceptions.BillingException
+            elif respText == "ERROR 04":
+                raise exceptions.WrongRecipientException
+            elif respText == "ERROR 05":
+                raise exceptions.InternalErrorException
+            else:
+                return respText
 
     async def send(self, dest: str, msg: str, mode: str, parameters: dict = []) -> int:
         """Send a SMS.
