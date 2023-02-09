@@ -30,6 +30,7 @@ except PackageNotFoundError:
 extensions = [
     "sphinx.ext.githubpages",
     "sphinx.ext.autodoc",
+    "sphinx_rtd_theme",
 ]
 
 # templates_path = ["_templates"]
