@@ -1,11 +1,14 @@
 """smsbox.net api client module."""
-
 from __future__ import annotations
+
+import logging
 
 from aiohttp import ClientSession
 from async_property import async_property
 
 from . import exceptions
+
+_LOGGER = logging.getLogger(__name__)
 
 
 class Client:
@@ -43,14 +46,22 @@ class Client:
             "authorization": f"App {self.cleApi}",
         }
 
+        _LOGGER.debug(
+            "Sending request to SMSBox API using host %s with URI %s and parameters %s",
+            self.host,
+            uri,
+            parameters,
+        )
         async with self.session.post(
             url=f"https://{self.host}/{uri}",
             headers=headers,
             data=parameters,
         ) as resp:
+            _LOGGER.debug("HTTP response: %s", resp.status)
             if resp.status != 200:
                 raise exceptions.HTTPException(resp.status)
             respText = await resp.text()
+            _LOGGER.debug("API response: %s", respText)
             if respText == "ERROR":
                 raise exceptions.SMSBoxException
             elif respText == "ERROR 01":
