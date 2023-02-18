@@ -34,7 +34,7 @@
             PySMSBoxNet
           </a>
               <div class="version">
-                2023.2.1.post4+git.ecd859e2
+                2023.2.1.post5+git.5e0e1115
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -97,7 +97,7 @@ Even if it is a little bit different, its principle is the same.</p>
 
         <span class="k">try</span><span class="p">:</span>
             <span class="c1"># Before sending a message, we display remaining credits</span>
-            <span class="n">credits</span> <span class="o">=</span> <span class="k">await</span> <span class="n">sms</span><span class="o">.</span><span class="n">credits</span>
+            <span class="n">credits</span> <span class="o">=</span> <span class="k">await</span> <span class="n">sms</span><span class="o">.</span><span class="n">get_credits</span><span class="p">()</span>
             <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Remaining credits before: </span><span class="si">{</span><span class="n">credits</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
             <span class="c1"># To send a message</span>
@@ -113,7 +113,7 @@ Even if it is a little bit different, its principle is the same.</p>
             <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;SMS sent, ID : </span><span class="si">{</span><span class="n">msgID</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
             <span class="c1"># We get remaining credits</span>
-            <span class="n">credits</span> <span class="o">=</span> <span class="k">await</span> <span class="n">sms</span><span class="o">.</span><span class="n">credits</span>
+            <span class="n">credits</span> <span class="o">=</span> <span class="k">await</span> <span class="n">sms</span><span class="o">.</span><span class="n">get_credits</span><span class="p">()</span>
             <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Remaining credits after: </span><span class="si">{</span><span class="n">credits</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">credits</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;There are remaining credits&quot;</span><span class="p">)</span>
