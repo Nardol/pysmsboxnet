@@ -27,7 +27,7 @@ async def main():
             # print(f"SMS sent, ID : {msgID}")
 
             # We get remaining credits
-            credits = await sms.credits
+            credits = await sms.get_credits()
             # print(f"Remaining credits: {credits}")
             if credits > 0:
                 print("There are remaining credits")
