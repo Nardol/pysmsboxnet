@@ -4,7 +4,7 @@ pysmsboxnet
 .. automodule:: pysmsboxnet.api
 
 .. autoclass:: pysmsboxnet.api.Client
-   :members: send, credits
+   :members: send, get_credits
 
 Exceptions
 ==========

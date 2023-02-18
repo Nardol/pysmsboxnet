@@ -4,7 +4,6 @@ from __future__ import annotations
 import logging
 
 from aiohttp import ClientSession
-from async_property import async_property
 
 from . import exceptions
 
@@ -104,8 +103,7 @@ class Client:
                 return 0
             return int(respOK[1])
 
-    @async_property
-    async def credits(self) -> float:
+    async def get_credits(self) -> float:
         """Return float number of credits.
 
         :raises pysmsboxnet.exceptions.SMSBoxException: result is not OK

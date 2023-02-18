@@ -22,7 +22,7 @@ Even if it is a little bit different, its principle is the same.
 
            try:
                # Before sending a message, we display remaining credits
-               credits = await sms.credits
+               credits = await sms.get_credits()
                print(f"Remaining credits before: {credits}")
 
                # To send a message
@@ -38,7 +38,7 @@ Even if it is a little bit different, its principle is the same.
                print(f"SMS sent, ID : {msgID}")
 
                # We get remaining credits
-               credits = await sms.credits
+               credits = await sms.get_credits()
                print(f"Remaining credits after: {credits}")
                if credits > 0:
                    print("There are remaining credits")

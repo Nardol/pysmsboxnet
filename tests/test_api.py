@@ -289,7 +289,7 @@ async def test_credits(aresponses):
             SMSBOX_HOST,
             SMSBOX_API_KEY,
         )
-        result = await sms.credits
+        result = await sms.get_credits()
         assert CREDITS == result
         await session.close()
 
@@ -313,7 +313,7 @@ async def test_exception_credits(aresponses):
             SMSBOX_API_KEY,
         )
         with pytest.raises(exceptions.SMSBoxException):
-            await sms.credits
+            await sms.get_credits()
             await session.close()
 
 
@@ -336,5 +336,5 @@ async def test_error_credits(aresponses):
             SMSBOX_API_KEY,
         )
         with pytest.raises(exceptions.SMSBoxException):
-            await sms.credits
+            await sms.get_credits()
             await session.close()
