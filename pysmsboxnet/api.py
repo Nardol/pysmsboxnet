@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 import logging
-from collections.abc import Iterable
 
 from aiohttp import ClientSession
 
@@ -25,7 +24,7 @@ class Client:
         self.cleApi = cleApi
         self.session = session
 
-    async def __smsbox_request(self, uri: str, parameters: Iterable) -> str:
+    async def __smsbox_request(self, uri: str, parameters: dict[str, str]) -> str:
         """Private method to send a request to the API.
 
         :param str uri: the host API endpoint, for example api.php or 1.1/api.php
@@ -78,7 +77,7 @@ class Client:
                 return respText
 
     async def send(
-        self, dest: str, msg: str, mode: str, parameters: Iterable = []
+        self, dest: str, msg: str, mode: str, parameters: dict[str, str] | None = None
     ) -> int:
         """Send a SMS.
 
@@ -96,7 +95,8 @@ class Client:
             "mode": mode,
             "charset": "utf-8",
         }
-        postData.update(parameters)
+        if parameters:
+            postData.update(parameters)
 
         respText = await self.__smsbox_request("1.1/api.php", postData)
 

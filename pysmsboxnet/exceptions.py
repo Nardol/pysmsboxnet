@@ -15,7 +15,7 @@ class SMSBoxException(BaseException):
 class ParameterErrorException(SMSBoxException):
     """Exception when API returns ERROR 01."""
 
-    def __init__(self):
+    def __init__(self) -> None:
         """Initialize for bad parameters exception."""
         super().__init__("Some parameters are invalid or missing")
 
@@ -23,7 +23,7 @@ class ParameterErrorException(SMSBoxException):
 class AuthException(SMSBoxException):
     """Exception when API returns ERROR 02."""
 
-    def __init__(self):
+    def __init__(self) -> None:
         """Initialize authorization error, no message to specify."""
         super().__init__(
             "Unable to authenticate,"
@@ -34,7 +34,7 @@ class AuthException(SMSBoxException):
 class BillingException(SMSBoxException):
     """Exception when API returns ERROR 03."""
 
-    def __init__(self):
+    def __init__(self) -> None:
         """Initialize when no enough SMS credits, no message to specify."""
         super().__init__("No enough credits, please buy some")
 
@@ -42,7 +42,7 @@ class BillingException(SMSBoxException):
 class WrongRecipientException(SMSBoxException):
     """Exception when API returns ERROR 04."""
 
-    def __init__(self):
+    def __init__(self) -> None:
         """Initialize when recipient is bad, no message to specify."""
         super().__init__("Wrong recipient(s), not valid or missformated")
 
@@ -50,7 +50,7 @@ class WrongRecipientException(SMSBoxException):
 class InternalErrorException(SMSBoxException):
     """Exception when API returns ERROR 05."""
 
-    def __init__(self):
+    def __init__(self) -> None:
         """Initialize internal error."""
         super().__init__("SMSBox.net internal error, try again later")
 
