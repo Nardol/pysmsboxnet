@@ -47,13 +47,17 @@ jobs:
             pyproject.toml
           check-latest: true
 
-      - name: 📦 Install dependencies
-        run: pip3 install -r requirements_lint.txt
+      - name: 📦 Install dependencies in virtual env
+        run: |
+          python3 -m venv venv
+          source venv/bin/activate
+          pip3 install -r requirements_lint.txt
+          pip install -e .
 
       - name: 🖤 Lint with Black
-        run: black pysmsboxnet tests --check
+        run: venv/bin/black pysmsboxnet tests --check
       - name: 🖤 Lint with Flake8
-        run: flake8 pysmsboxnet tests
+        run: venv/bin/flake8 pysmsboxnet tests
       - name: Pre-commit cache
         uses: actions/cache@v3.2.6
         with:
@@ -63,7 +67,7 @@ jobs:
             ${{ runner.os }}-pre-commit-
 
       - name: "Run pre-commits"
-        run: pre-commit run --all-files
+        run: venv/bin/pre-commit run --all-files
 
   test:
     name: Test with Python ${{ matrix.python-version }}
