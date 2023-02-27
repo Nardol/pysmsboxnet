@@ -57,3 +57,5 @@ repos:
         types: [python]
         require_serial: true
         files: ^(pysmsboxnet)/.+\.py$
+ci:
+  skip: ["mypy"]
