@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import random
+from typing import Any
 
 import aiohttp
 import pytest
@@ -20,7 +21,7 @@ SMSBOX_STRATEGY = "2"
 
 
 @pytest.mark.asyncio
-async def test_parameters_error(aresponses):
+async def test_parameters_error(aresponses: Any) -> None:
     """Test if exception is raised if web server returns ERROR 01."""
     aresponses.add(
         "api.smsbox.pro",
@@ -44,7 +45,7 @@ async def test_parameters_error(aresponses):
 
 
 @pytest.mark.asyncio
-async def test_bad_auth(aresponses):
+async def test_bad_auth(aresponses: Any) -> None:
     """Test if exception is raised in case of wrong authentication ERROR 02."""
     aresponses.add(
         "api.smsbox.pro",
@@ -72,7 +73,7 @@ async def test_bad_auth(aresponses):
 
 
 @pytest.mark.asyncio
-async def test_billing(aresponses):
+async def test_billing(aresponses: Any) -> None:
     """Test if BillingException is raised in case of ERROR 03."""
     aresponses.add(
         "api.smsbox.pro",
@@ -100,7 +101,7 @@ async def test_billing(aresponses):
 
 
 @pytest.mark.asyncio
-async def test_bad_dest(aresponses):
+async def test_bad_dest(aresponses: Any) -> None:
     """Test if WrongRecipientException is raised on ERROR 04."""
     aresponses.add(
         "api.smsbox.pro",
@@ -128,7 +129,7 @@ async def test_bad_dest(aresponses):
 
 
 @pytest.mark.asyncio
-async def test_internal_error(aresponses):
+async def test_internal_error(aresponses: Any) -> None:
     """Test if right exception is raised on ERROR 05."""
     aresponses.add(
         "api.smsbox.pro",
@@ -156,7 +157,7 @@ async def test_internal_error(aresponses):
 
 
 @pytest.mark.asyncio
-async def test_other_error(aresponses):
+async def test_other_error(aresponses: Any) -> None:
     """Test unknown error."""
     aresponses.add(
         "api.smsbox.pro",
@@ -184,7 +185,7 @@ async def test_other_error(aresponses):
 
 
 @pytest.mark.asyncio
-async def test_http_error(aresponses):
+async def test_http_error(aresponses: Any) -> None:
     """Test if HTTP status is not 200."""
     aresponses.add(
         "api.smsbox.pro",
@@ -212,7 +213,7 @@ async def test_http_error(aresponses):
 
 
 @pytest.mark.asyncio
-async def test_ok(aresponses):
+async def test_ok(aresponses: Any) -> None:
     """Test result OK without ID."""
     aresponses.add(
         "api.smsbox.pro",
@@ -240,7 +241,7 @@ async def test_ok(aresponses):
 
 
 @pytest.mark.asyncio
-async def test_ok_with_id(aresponses):
+async def test_ok_with_id(aresponses: Any) -> None:
     """Test result OK with a random ID."""
     # Get a random integer which will serv as the message ID
     MSG_ID = random.randint(100000000000, 999999999999)
@@ -270,7 +271,7 @@ async def test_ok_with_id(aresponses):
 
 
 @pytest.mark.asyncio
-async def test_credits(aresponses):
+async def test_credits(aresponses: Any) -> None:
     """Test credits async property returning a random number."""
     # Get a random float which will serv as the number of credits
     CREDITS = round(random.uniform(0, 9999), 1)
@@ -295,7 +296,7 @@ async def test_credits(aresponses):
 
 
 @pytest.mark.asyncio
-async def test_exception_credits(aresponses):
+async def test_exception_credits(aresponses: Any) -> None:
     """Test get credits async property raising exception."""
     aresponses.add(
         "api.smsbox.pro",
@@ -318,7 +319,7 @@ async def test_exception_credits(aresponses):
 
 
 @pytest.mark.asyncio
-async def test_error_credits(aresponses):
+async def test_error_credits(aresponses: Any) -> None:
     """Test get credits async property returning strange string."""
     aresponses.add(
         "api.smsbox.pro",

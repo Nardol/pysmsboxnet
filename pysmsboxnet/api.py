@@ -24,7 +24,7 @@ class Client:
         self.cleApi = cleApi
         self.session = session
 
-    async def __smsbox_request(self, uri: str, parameters: dict) -> str:
+    async def __smsbox_request(self, uri: str, parameters: dict[str, str]) -> str:
         """Private method to send a request to the API.
 
         :param str uri: the host API endpoint, for example api.php or 1.1/api.php
@@ -76,7 +76,9 @@ class Client:
             else:
                 return respText
 
-    async def send(self, dest: str, msg: str, mode: str, parameters: dict = []) -> int:
+    async def send(
+        self, dest: str, msg: str, mode: str, parameters: dict[str, str] | None = None
+    ) -> int:
         """Send a SMS.
 
         :param str dest: SMS recipient(s), see API documentation about how to format
@@ -93,15 +95,15 @@ class Client:
             "mode": mode,
             "charset": "utf-8",
         }
-        postData.update(parameters)
+        if parameters:
+            postData.update(parameters)
 
         respText = await self.__smsbox_request("1.1/api.php", postData)
 
-        if respText.startswith("OK"):
-            respOK = respText.split(" ")
-            if len(respOK) == 1:
-                return 0
-            return int(respOK[1])
+        respOK = respText.split(" ")
+        if len(respOK) == 1:
+            return 0
+        return int(respOK[1])
 
     async def get_credits(self) -> float:
         """Return float number of credits.
