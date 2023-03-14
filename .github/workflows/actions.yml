@@ -59,7 +59,7 @@ jobs:
       - name: 🖤 Lint with Flake8
         run: venv/bin/flake8 pysmsboxnet tests
       - name: Pre-commit cache
-        uses: actions/cache@v3.3.0
+        uses: actions/cache@v3.3.1
         with:
           path: ~/.cache/pre-commit
           key: "${{ runner.os }}-pc-${{ hashFiles('.pre-commit-config.yaml') }}"
