@@ -12,4 +12,4 @@ jobs:
       - name: "Checkout Repository"
         uses: actions/checkout@v3.5.2
       - name: "Dependency Review"
-        uses: actions/dependency-review-action@v3.0.4
+        uses: actions/dependency-review-action@v3.0.6
