@@ -2,5 +2,5 @@ black==23.7.0
 codespell==v2.1.0
 flake8==6.1.0
 isort==5.12.0
-mypy==1.4.1
+mypy==1.5.0
 pre-commit==3.3.3
