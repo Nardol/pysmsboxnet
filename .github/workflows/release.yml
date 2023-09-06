@@ -6,9 +6,9 @@ on:
     types: ["published"]
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-    name: Deploy to PyPi
+    name: Build and upload artifact
     steps:
       - name: 📥 Checkout the repository
         uses: actions/checkout@v4.0.0
@@ -27,16 +27,38 @@ jobs:
           check-latest: true
 
       - name: 📦 Install dependencies
-        run: |
-          python3 -m pip install build twine
+        run: "python3 -m pip install build"
 
-      - name: 🚀 Publish to PyPi
-        env:
-          TWINE_USERNAME: __token__
-          TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
-        run: |
-          python -m build
-          twine upload dist/*
+      - name: Build
+        run: "python -m build"
+
+      - name: Upload dist
+        uses: actions/upload-artifact@v3.1.2
+        with:
+          name: dist_files
+          path: dist
+
+  pypi_publish:
+    runs-on: ubuntu-latest
+    name: Deploy to PyPi
+    environment:
+      name: release
+      url: "https://pypi.org/p/pysmsboxnet"
+    permissions:
+      id-token: write
+    steps:
+      - name: 📥 Checkout the repository
+        uses: actions/checkout@v4.0.0
+        with:
+          fetch-depth: 0
+
+      - name: Download dist artifact
+        uses: actions/download-artifact@v2.1.1
+        with:
+          name: dist_files
+
+      - name: 🚀 Deploy to PyPi
+        uses: pypa/gh-action-pypi-publish@v1.8.10
 
   deploy_doc:
     permissions:
