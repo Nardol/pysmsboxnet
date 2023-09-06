@@ -10,9 +10,6 @@ on:
     branches:
       - main
 
-permissions:
-  contents: write
-
 jobs:
   changes:
     runs-on: ubuntu-latest
@@ -166,6 +163,8 @@ jobs:
   deploy_doc:
     if: github.event_name == 'push' && needs.changes.outputs.docfiles == 'true'
     needs: [test_build, changes]
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
     name: Build and deploydocumentation from main
     steps:
