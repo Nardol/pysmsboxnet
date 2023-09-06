@@ -5,9 +5,6 @@ on:
   release:
     types: ["published"]
 
-permissions:
-  contents: write
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -42,6 +39,8 @@ jobs:
           twine upload dist/*
 
   deploy_doc:
+    permissions:
+      contents: write
     if: "!github.event.release.prerelease"
     needs: deploy
     runs-on: ubuntu-latest
