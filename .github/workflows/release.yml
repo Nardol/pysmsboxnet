@@ -57,8 +57,7 @@ jobs:
         uses: actions/download-artifact@v2.1.1
         with:
           name: dist_files
-          with:
-            path: dist
+          path: dist
 
       - name: 🚀 Deploy to PyPi
         uses: pypa/gh-action-pypi-publish@v1.8.10
