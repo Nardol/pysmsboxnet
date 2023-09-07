@@ -160,6 +160,39 @@ jobs:
       - name: Run build
         run: python3 -m build
 
+      - name: Upload dist
+        uses: actions/upload-artifact@v3.1.3
+        with:
+          name: dist_files
+          path: dist
+
+  deploy:
+    runs-on: ubuntu-latest
+    name: Deploy to PyPi
+    needs: test_build
+    if: github.event_name == 'push'
+    environment:
+      name: dev_release
+      url: "https://test.pypi.org/project/pysmsboxnet/"
+    permissions:
+      id-token: write
+    steps:
+      - name: 📥 Checkout the repository
+        uses: actions/checkout@v4.0.0
+        with:
+          fetch-depth: 0
+
+      - name: Download dist artifact
+        uses: actions/download-artifact@v3.0.2
+        with:
+          name: dist_files
+          path: dist
+
+      - name: 🚀 Deploy to PyPi
+        uses: pypa/gh-action-pypi-publish@v1.8.10
+        with:
+          repository-url: https://test.pypi.org/legacy/
+
   deploy_doc:
     if: github.event_name == 'push' && needs.changes.outputs.docfiles == 'true'
     needs: [test_build, changes]
