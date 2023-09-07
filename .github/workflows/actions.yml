@@ -103,7 +103,6 @@ jobs:
 
   test_install:
     name: Test installing  with Python ${{ matrix.python-version }}
-    environment: test_api
     needs: test
     runs-on: ubuntu-latest
     strategy:
