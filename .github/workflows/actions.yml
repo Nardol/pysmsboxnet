@@ -143,6 +143,8 @@ jobs:
     steps:
       - name: 📥 Checkout the repository
         uses: actions/checkout@v4.0.0
+        with:
+          fetch-depth: 0
 
       - name: 🛠️ Set up Python 3
         uses: actions/setup-python@v4.7.0
@@ -179,8 +181,6 @@ jobs:
     steps:
       - name: 📥 Checkout the repository
         uses: actions/checkout@v4.0.0
-        with:
-          fetch-depth: 0
 
       - name: Download dist artifact
         uses: actions/download-artifact@v3.0.2
