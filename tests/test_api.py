@@ -11,7 +11,7 @@ import pytest
 from pysmsboxnet import exceptions
 from pysmsboxnet.api import Client
 
-# Constents
+# Constants
 SMSBOX_HOST = "api.smsbox.pro"
 SMSBOX_API_KEY = "pub-xxxxx-xxxxx-xxxx-xxxx-xxxxx-xxxxxxxx"
 SMS_RECIPIENT = "9999001"
