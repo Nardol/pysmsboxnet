@@ -67,12 +67,13 @@ jobs:
         run: venv/bin/pre-commit run --all-files
 
   test:
-    name: Test with Python ${{ matrix.python-version }}
+    name: Test with Python ${{ matrix.python-version }} on ${{ matrix.os }}
     needs: lint
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         python-version: [3.8, 3.9, "3.10", 3.11]
+        os: [ubuntu-latest, windows-latest]
     steps:
       - name: 📥 Checkout the repository
         uses: actions/checkout@v4.1.1
@@ -102,12 +103,13 @@ jobs:
         uses: codecov/codecov-action@v3.1.4
 
   test_install:
-    name: Test installing  with Python ${{ matrix.python-version }}
+    name: "Test install with Python ${{matrix.python-version}} ${{matrix.os}}"
     needs: test
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         python-version: [3.8, 3.9, "3.10", 3.11]
+        os: [ubuntu-latest, windows-latest]
     steps:
       - name: 📥 Checkout the repository
         uses: actions/checkout@v4.1.1
@@ -125,16 +127,14 @@ jobs:
       - name: Install using pip
         run: pip3 install .
 
-      - name: Try example in /tmp
+      - name: Try example in temporary directory
         env:
           SMSBOX_API_KEY: ${{ secrets.SMSBOX_API_KEY }}
+          RUNNER_TEMP: ${{ runner.temp }}
         run: |
-          mkdir -p /tmp/test_example
-          cp example.py /tmp/test_example
-          cd /tmp/test_example
-          python3 /tmp/test_example/example.py
-          cd -
-          rm -rf /tmp/test_example
+          python3 script/copy_example.py
+          cd ${{ runner.temp }}/test_example
+          python3 ${{ runner.temp }}/test_example/example.py
 
   test_build:
     name: Test building  with Python 3
