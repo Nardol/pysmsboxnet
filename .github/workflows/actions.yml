@@ -69,11 +69,11 @@ jobs:
   test:
     name: Test with Python ${{ matrix.python-version }} on ${{ matrix.os }}
     needs: lint
-    runs-on: ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}-latest
     strategy:
       matrix:
         python-version: [3.8, 3.9, "3.10", 3.11, 3.12]
-        os: [ubuntu-latest, windows-latest]
+        os: [ubuntu, windows]
     steps:
       - name: 📥 Checkout the repository
         uses: actions/checkout@v4.1.1
@@ -101,11 +101,11 @@ jobs:
   test_install:
     name: "Test install with Python ${{matrix.python-version}} ${{matrix.os}}"
     needs: test
-    runs-on: ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}-latest
     strategy:
       matrix:
         python-version: [3.8, 3.9, "3.10", 3.11, 3.12]
-        os: [ubuntu-latest, windows-latest]
+        os: [ubuntu, windows]
     steps:
       - name: 📥 Checkout the repository
         uses: actions/checkout@v4.1.1
