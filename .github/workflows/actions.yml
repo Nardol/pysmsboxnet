@@ -73,7 +73,7 @@ jobs:
     strategy:
       matrix:
         python-version: [3.8, 3.9, "3.10", 3.11, 3.12]
-        os: [ubuntu, windows]
+        os: [ubuntu, windows, macos]
     steps:
       - name: 📥 Checkout the repository
         uses: actions/checkout@v4.1.1
@@ -105,7 +105,7 @@ jobs:
     strategy:
       matrix:
         python-version: [3.8, 3.9, "3.10", 3.11, 3.12]
-        os: [ubuntu, windows]
+        os: [ubuntu, windows, macos]
     steps:
       - name: 📥 Checkout the repository
         uses: actions/checkout@v4.1.1
