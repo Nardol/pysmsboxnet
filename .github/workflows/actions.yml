@@ -22,7 +22,7 @@ jobs:
         with:
           filters: |
             docfiles:
-              - 'pysmsboxnet/*.py'
+              - 'src/pysmsboxnet/*.py'
               - 'docs/**'
               - 'requirements_doc.txt'
 
@@ -52,9 +52,9 @@ jobs:
           pip install -e .
 
       - name: 🖤 Lint with Black
-        run: venv/bin/black pysmsboxnet tests --check
+        run: venv/bin/black src tests --check
       - name: 🖤 Lint with Flake8
-        run: venv/bin/flake8 pysmsboxnet tests
+        run: venv/bin/flake8 src tests
       - name: Pre-commit cache
         uses: actions/cache@v3.3.2
         with:
@@ -85,14 +85,14 @@ jobs:
           check-latest: true
 
       - name: 📦 Install dependencies
-        run: pip3 install -r requirements_test.txt
+        run: pip3 install -r requirements_test.txt -e .
 
       - name: 🏃 Run tests
         run: pytest tests
 
       - name: Run code coverage
         if: ${{ matrix.python-version == '3.10' }}
-        run: pytest --cov=./pysmsboxnet --cov-report=xml tests
+        run: pytest --cov=./src --cov-report=xml tests
 
       - name: upload to codecov
         if: ${{ matrix.python-version == '3.10' }}
