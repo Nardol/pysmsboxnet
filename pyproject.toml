@@ -1,5 +1,5 @@
 [build-system]
-requires = [ "setuptools==67.2.0", "wheel==0.38.4", "setuptools-git-versioning==1.13.1", ]
+requires = [ "setuptools", "setuptools-git-versioning", ]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -43,12 +43,7 @@ dependencies = [
 
 [tool.setuptools]
 platforms = ["any"]
-zip-safe  = false
-include-package-data = true
-
-[tool.setuptools.packages.find]
-include = ["pysmsboxnet*"]
-namespaces = false
+include-package-data = false
 
 [tool.black]
 target-version = ["py39", "py310"]
