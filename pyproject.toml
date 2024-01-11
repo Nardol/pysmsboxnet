@@ -48,6 +48,7 @@ include-package-data = false
 [tool.black]
 target-version = ["py39", "py310"]
 exclude = 'generated'
+extend-exclude = 'src/pysmsboxnet/_version.py'
 
 [tool.isort]
 profile = "black"
