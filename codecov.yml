@@ -2,3 +2,4 @@ comment: # this is a top-level key
   require_changes: true
 ignore:
   - "src/pysmsboxnet/_version.py"
+  - "src/pysmsboxnet/__init__.py"
