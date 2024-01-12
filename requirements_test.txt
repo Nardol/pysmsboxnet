@@ -1,5 +1,5 @@
 aiohttp>=3.8.0,<4.0
-aresponses==2.1.6
+aresponses==3.0.0
 coverage==7.4.0
 pytest==7.4.4
 pytest-asyncio==0.23.3
