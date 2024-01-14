@@ -24,7 +24,7 @@ jobs:
             docfiles:
               - 'src/pysmsboxnet/*.py'
               - 'docs/**'
-              - 'requirements_doc.txt'
+              - 'pyproject.toml'
 
   lint:
     name: Lint
@@ -39,17 +39,14 @@ jobs:
         with:
           python-version: 3.11
           cache: pip
-          cache-dependency-path: |
-            **/requirements*.txt
-            pyproject.toml
+          cache-dependency-path: pyproject.toml
           check-latest: true
 
       - name: 📦 Install dependencies in virtual env
         run: |
           python3 -m venv venv
           source venv/bin/activate
-          pip3 install -r requirements_lint.txt
-          pip install -e .
+          pip3 install -e ".[lint]"
 
       - name: 🖤 Lint with Black
         run: venv/bin/black src tests --check
@@ -85,7 +82,7 @@ jobs:
           check-latest: true
 
       - name: 📦 Install dependencies
-        run: pip3 install -r requirements_test.txt -e .
+        run: pip3 install -e ".[test]"
 
       - name: 🏃 Run tests
         run: pytest tests
@@ -167,16 +164,13 @@ jobs:
         with:
           python-version: "3.11"
           cache: pip
-          cache-dependency-path: |
-            **/requirements*.txt
-            pyproject.toml
+          cache-dependency-path: pyproject.toml
           check-latest: true
 
       - name: 📦 Install dependencies
         run: |
           pip3 install --upgrade pip
-          pip3 install -r requirements_doc.txt
-          pip3 install -e .
+          pip3 install -e ".[doc]"
 
       - name: Build documentation using sphinx
         run: make -C docs html
