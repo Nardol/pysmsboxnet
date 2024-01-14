@@ -1,3 +1,0 @@
-setuptools-git-versioning<2
-Sphinx==7.2.6
-furo==2023.9.10

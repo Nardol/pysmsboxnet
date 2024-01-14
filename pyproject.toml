@@ -34,6 +34,27 @@ dependencies = [
     "aiohttp>=3.8.0,<4.0",
 ]
 
+[project.optional-dependencies]
+doc = [
+    "Sphinx==7.2.6",
+    "furo==2023.9.10",
+]
+lint = [
+    "black==23.12.1",
+    "codespell==v2.2.6",
+    "flake8==7.0.0",
+    "isort==5.13.2",
+    "mypy==1.8.0",
+    "pre-commit==3.6.0",
+]
+test = [
+    "aresponses==3.0.0",
+    "coverage==7.4.0",
+    "pytest==7.4.4",
+    "pytest-asyncio==0.23.3",
+    "pytest-cov==4.1.0",
+]
+
 [project.urls]
 "Source code" = "https://github.com/Nardol/pysmsboxnet"
 "Bug tracker" = "https://github.com/Nardol/pysmsboxnet/issues"
