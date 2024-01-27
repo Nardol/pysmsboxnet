@@ -40,7 +40,7 @@ doc = [
     "furo==2023.9.10",
 ]
 lint = [
-    "black==23.12.1",
+    "black==24.1.0",
     "codespell==v2.2.6",
     "flake8==7.0.0",
     "isort==5.13.2",
