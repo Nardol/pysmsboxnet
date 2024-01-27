@@ -112,3 +112,12 @@ extend-select = [
     "W",
 ]
 mccabe = {max-complexity = 25}
+
+[tool.pytest.ini_options]
+testpaths = [
+    "tests",
+]
+norecursedirs = [
+    ".git",
+]
+asyncio_mode = "auto"
