@@ -31,11 +31,11 @@ repos:
         args:
           - --skip="./.*"
           - --quiet-level=2
-  - repo: https://github.com/PyCQA/flake8
-    rev: 7.0.0
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.1.14
     hooks:
-      - id: flake8
-        #files: ^(pysmsboxnet|tests)/.+\.py$
+      - id: ruff
+      - id: ruff-format
   - repo: https://github.com/adrienverge/yamllint.git
     rev: v1.33.0
     hooks:

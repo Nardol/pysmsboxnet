@@ -50,8 +50,8 @@ jobs:
 
       - name: 🖤 Lint with Black
         run: venv/bin/black src tests --check
-      - name: 🖤 Lint with Flake8
-        run: venv/bin/flake8 src tests
+      - name: 🖤 Lint with Ruff
+        run: venv/bin/ruff check
       - name: Pre-commit cache
         uses: actions/cache@v4.0.0
         with:

@@ -1,3 +1,5 @@
+"""Copy example.py to a temporary directory."""
+
 import os
 import shutil
 
