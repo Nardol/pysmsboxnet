@@ -42,7 +42,7 @@ doc = [
 lint = [
     "black==24.1.0",
     "codespell==v2.2.6",
-    "flake8==7.0.0",
+    "ruff==0.1.14",
     "isort==5.13.2",
     "mypy==1.8.0",
     "pre-commit==3.6.0",
@@ -76,3 +76,33 @@ profile = "black"
 
 [tool.setuptools_scm]
 version_file = "src/pysmsboxnet/_version.py"
+
+[tool.ruff]
+exclude = [
+    ".venv",
+    ".git",
+    ".tox",
+    "docs",
+    "venv",
+    "bin",
+    "lib",
+    "deps",
+    "build",
+    "src/pysmsboxnet/_version.py",
+]
+ignore = [
+    "D202",
+    "D203",
+    "D213",
+    "E501",
+]
+select = [
+    "C9",
+    "D",
+    "E",
+    "F",
+    "W",
+]
+
+[tool.ruff.mccabe]
+max-complexity = 25

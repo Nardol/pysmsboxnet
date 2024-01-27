@@ -1,3 +1,5 @@
+"""Example script."""
+
 import asyncio
 from os import getenv
 from sys import exit
@@ -9,6 +11,7 @@ from pysmsboxnet.api import Client
 
 
 async def main():
+    """Execute main instructions."""
     async with aiohttp.ClientSession() as session:
         sms = Client(session, "api.smsbox.pro", API_KEY)
 
