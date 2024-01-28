@@ -58,6 +58,6 @@ class InternalErrorException(SMSBoxException):
 class HTTPException(SMSBoxException):
     """Exception when API returns ERROR 03."""
 
-    def __init__(self, errorCode: int):
+    def __init__(self, error_code: int):
         """Initialize HTTP error Exception."""
-        super().__init__(f"HTTP error ({errorCode})")
+        super().__init__(f"HTTP error ({error_code})")

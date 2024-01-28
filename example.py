@@ -5,7 +5,6 @@ from os import getenv
 from sys import exit
 
 import aiohttp
-
 from pysmsboxnet import exceptions
 from pysmsboxnet.api import Client
 
@@ -22,7 +21,7 @@ async def main():
             # With the parameter id set to 1
             # If we don't set id, the send function will return 0
             # In case of failure an exception will be thrown
-            # It is commented, delete the # character and the following space on each line to uncomment it
+            # Uncomment it if you need it
             # msgID = await sms.send(
             #     SMS_RECIPIENT, "Test message.", "expert", {"strategy": "2", "id": "1"}
             # )
@@ -30,9 +29,9 @@ async def main():
             # print(f"SMS sent, ID : {msgID}")
 
             # We get remaining credits
-            credits = await sms.get_credits()
-            # print(f"Remaining credits: {credits}")
-            if credits > 0:
+            remaining_credits = await sms.get_credits()
+            # print(f"Remaining credits: {remaining_credits}")
+            if remaining_credits > 0:
                 print("There are remaining credits")
             else:
                 print("No remaining credit")

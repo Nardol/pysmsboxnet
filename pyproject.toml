@@ -40,10 +40,6 @@ doc = [
     "furo==2023.9.10",
 ]
 lint = [
-    "black==24.1.0",
-    "codespell==v2.2.6",
-    "ruff==0.1.14",
-    "isort==5.13.2",
     "mypy==1.8.0",
     "pre-commit==3.6.0",
 ]
@@ -66,19 +62,11 @@ test = [
 platforms = ["any"]
 include-package-data = false
 
-[tool.black]
-target-version = ["py39", "py310"]
-exclude = 'generated'
-extend-exclude = 'src/pysmsboxnet/_version.py'
-
-[tool.isort]
-profile = "black"
-
 [tool.setuptools_scm]
 version_file = "src/pysmsboxnet/_version.py"
 
 [tool.ruff]
-exclude = [
+extend-exclude = [
     ".venv",
     ".git",
     ".tox",
@@ -91,16 +79,29 @@ exclude = [
     "src/pysmsboxnet/_version.py",
 ]
 ignore = [
-    "D202",
     "D203",
     "D213",
     "E501",
 ]
-select = [
+extend-select = [
+    "A",
+    "ASYNC",
+    "B",
+    "C",
+    "C416",
     "C9",
     "D",
     "E",
     "F",
+    "I",
+    "N",
+    "PL",
+    "PLC",
+    "PLE",
+    "PLR",
+    "PLW",
+    "RUF",
+    "UP",
     "W",
 ]
 
