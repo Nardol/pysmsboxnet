@@ -7,7 +7,6 @@ from typing import Any
 
 import aiohttp
 import pytest
-
 from pysmsboxnet import exceptions
 from pysmsboxnet.api import Client
 
@@ -244,13 +243,13 @@ async def test_ok(aresponses: Any) -> None:
 async def test_ok_with_id(aresponses: Any) -> None:
     """Test result OK with a random ID."""
     # Get a random integer which will serv as the message ID
-    MSG_ID = random.randint(100000000000, 999999999999)
+    msg_id = random.randint(100000000000, 999999999999)
     aresponses.add(
         "api.smsbox.pro",
         "/1.1/api.php",
         "post",
         aresponses.Response(
-            text=f"OK {MSG_ID}",
+            text=f"OK {msg_id}",
             status=200,
         ),
     )
@@ -266,7 +265,7 @@ async def test_ok_with_id(aresponses: Any) -> None:
             SEND_MODE,
             {"strategy": SMSBOX_STRATEGY, "id": "1"},
         )
-        assert MSG_ID == result
+        assert msg_id == result
         await session.close()
 
 
@@ -274,13 +273,13 @@ async def test_ok_with_id(aresponses: Any) -> None:
 async def test_credits(aresponses: Any) -> None:
     """Test credits async property returning a random number."""
     # Get a random float which will serv as the number of credits
-    CREDITS = round(random.uniform(0, 9999), 1)
+    account_credits = round(random.uniform(0, 9999), 1)
     aresponses.add(
         "api.smsbox.pro",
         "/api.php",
         "post",
         aresponses.Response(
-            text=f"CREDIT {CREDITS}",
+            text=f"CREDIT {account_credits}",
             status=200,
         ),
     )
@@ -291,7 +290,7 @@ async def test_credits(aresponses: Any) -> None:
             SMSBOX_API_KEY,
         )
         result = await sms.get_credits()
-        assert CREDITS == result
+        assert account_credits == result
         await session.close()
 
 

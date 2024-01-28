@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import logging
+from http import client as http_client
 
 from aiohttp import ClientSession
 
@@ -16,13 +17,13 @@ class Client:
 
     :param aiohttp.ClientSession session: the aiohttp session to use
     :param str host: the API endpoint host, for example api.smsbox.pro (https is forced)
-    :param str cleApi: the SMSBox API key, name is in French to reflect the documentation
+    :param str cle_api: the SMSBox API key, name is in French to reflect the documentation
     """
 
-    def __init__(self, session: ClientSession, host: str, cleApi: str):
+    def __init__(self, session: ClientSession, host: str, cle_api: str):
         """Initialize the SMS."""
         self.host = host
-        self.cleApi = cleApi
+        self.cle_api = cle_api
         self.session = session
 
     async def __smsbox_request(self, uri: str, parameters: dict[str, str]) -> str:
@@ -43,7 +44,7 @@ class Client:
         :raises pysmsboxnet.exceptions.InternalErrorException: SMSBox API internal error
         """
         headers = {
-            "authorization": f"App {self.cleApi}",
+            "authorization": f"App {self.cle_api}",
         }
 
         _LOGGER.debug(
@@ -58,24 +59,24 @@ class Client:
             data=parameters,
         ) as resp:
             _LOGGER.debug("HTTP response: %s", resp.status)
-            if resp.status != 200:
+            if resp.status != http_client.OK:
                 raise exceptions.HTTPException(resp.status)
-            respText = await resp.text()
-            _LOGGER.debug("API response: %s", respText)
-            if respText == "ERROR":
+            resp_text = await resp.text()
+            _LOGGER.debug("API response: %s", resp_text)
+            if resp_text == "ERROR":
                 raise exceptions.SMSBoxException
-            elif respText == "ERROR 01":
+            elif resp_text == "ERROR 01":
                 raise exceptions.ParameterErrorException
-            elif respText == "ERROR 02":
+            elif resp_text == "ERROR 02":
                 raise exceptions.AuthException
-            elif respText == "ERROR 03":
+            elif resp_text == "ERROR 03":
                 raise exceptions.BillingException
-            elif respText == "ERROR 04":
+            elif resp_text == "ERROR 04":
                 raise exceptions.WrongRecipientException
-            elif respText == "ERROR 05":
+            elif resp_text == "ERROR 05":
                 raise exceptions.InternalErrorException
             else:
-                return respText
+                return resp_text
 
     async def send(
         self, dest: str, msg: str, mode: str, parameters: dict[str, str] | None = None
@@ -90,33 +91,33 @@ class Client:
         :returns: SMS ID if id parameter is set to 1 else 0
         :rtype: int
         """
-        postData = {
+        post_data = {
             "dest": dest,
             "msg": msg,
             "mode": mode,
             "charset": "utf-8",
         }
         if parameters:
-            postData.update(parameters)
+            post_data.update(parameters)
 
-        respText = await self.__smsbox_request("1.1/api.php", postData)
+        resp_text = await self.__smsbox_request("1.1/api.php", post_data)
 
-        respOK = respText.split(" ")
-        if len(respOK) == 1:
+        resp_ok = resp_text.split(" ")
+        if len(resp_ok) == 1:
             return 0
-        return int(respOK[1])
+        return int(resp_ok[1])
 
     async def get_credits(self) -> float:
         """Return float number of credits.
 
         :raises pysmsboxnet.exceptions.SMSBoxException: result is not OK
         """
-        postData = {
+        post_data = {
             "action": "credit",
         }
 
-        respText = await self.__smsbox_request("api.php", postData)
-        if respText.startswith("CREDIT"):
-            return float(respText.split(" ")[1])
+        resp_text = await self.__smsbox_request("api.php", post_data)
+        if resp_text.startswith("CREDIT"):
+            return float(resp_text.split(" ")[1])
         else:
-            raise exceptions.SMSBoxException(respText)
+            raise exceptions.SMSBoxException(resp_text)
