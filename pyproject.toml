@@ -47,7 +47,7 @@ test = [
     "aresponses==3.0.0",
     "coverage==7.4.3",
     "pytest==8.0.2",
-    "pytest-asyncio==0.23.5",
+    "pytest-asyncio==0.23.5.post1",
     "pytest-cov==4.1.0",
 ]
 
