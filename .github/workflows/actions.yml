@@ -50,7 +50,7 @@ jobs:
           pip3 install -e ".[lint]"
 
       - name: Pre-commit cache
-        uses: actions/cache@v4.0.1
+        uses: actions/cache@v4.0.2
         with:
           path: ~/.cache/pre-commit
           key: "${{ runner.os }}-pc-${{ hashFiles('.pre-commit-config.yaml') }}"
