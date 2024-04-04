@@ -90,7 +90,7 @@ jobs:
 
       - name: upload to codecov
         if: ${{ matrix.python-version == '3.10' }}
-        uses: codecov/codecov-action@v4.1.1
+        uses: codecov/codecov-action@v4.2.0
 
   test_install:
     name: "Test install with Python ${{matrix.python-version}} ${{matrix.os}}"
