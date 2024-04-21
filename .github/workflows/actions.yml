@@ -42,12 +42,17 @@ jobs:
           cache-dependency-path: pyproject.toml
           check-latest: true
 
-      - name: 📦 Install dependencies in virtual env
+      - name: Create and activate a virtual environment
+        # uv doesn't (yet) allow us to install packages globally;
+        # we have to create and activate a virtual environment
         run: |
-          python3 -m venv venv
-          source venv/bin/activate
-          pip3 install --upgrade pip
-          pip3 install -e ".[lint]"
+          curl -LsSf https://astral.sh/uv/install.sh | sh
+          uv venv .venv
+          echo "VIRTUAL_ENV=.venv" >> $GITHUB_ENV
+          echo "$PWD/.venv/bin" >> $GITHUB_PATH
+
+      - name: 📦 Install dependencies
+        run: uv pip install -e ".[lint]"
 
       - name: Pre-commit cache
         uses: actions/cache@v4.0.2
@@ -58,7 +63,7 @@ jobs:
             ${{ runner.os }}-pre-commit-
 
       - name: "🖤  Run pre-commits"
-        run: venv/bin/pre-commit run --all-files
+        run: pre-commit run --all-files
 
   test:
     name: Test with Python ${{ matrix.python-version }} on ${{ matrix.os }}
@@ -77,6 +82,26 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
           check-latest: true
+
+      - name: Create and activate a virtual environment (Windows)
+        if: ${{ runner.os == 'Windows' }}
+        # uv doesn't (yet) allow us to install packages globally;
+        # we have to create and activate a virtual environment
+        run: |
+          irm https://astral.sh/uv/install.ps1 | iex
+          uv venv .venv
+          "VIRTUAL_ENV=.venv" | Out-File -FilePath $env:GITHUB_ENV -Append
+          "$PWD/.venv/Scripts" | Out-File -FilePath $env:GITHUB_PATH -Append
+
+      - name: Create and activate a virtual environment (Unix)
+        if: ${{ runner.os != 'Windows' }}
+        # uv doesn't (yet) allow us to install packages globally;
+        # we have to create and activate a virtual environment
+        run: |
+          curl -LsSf https://astral.sh/uv/install.sh | sh
+          uv venv .venv
+          echo "VIRTUAL_ENV=.venv" >> $GITHUB_ENV
+          echo "$PWD/.venv/bin" >> $GITHUB_PATH
 
       - name: 📦 Install dependencies
         run: pip3 install -e ".[test]"
@@ -164,10 +189,17 @@ jobs:
           cache-dependency-path: pyproject.toml
           check-latest: true
 
-      - name: 📦 Install dependencies
+      - name: Create and activate a virtual environment
+        # uv doesn't (yet) allow us to install packages globally;
+        # we have to create and activate a virtual environment
         run: |
-          pip3 install --upgrade pip
-          pip3 install -e ".[doc]"
+          curl -LsSf https://astral.sh/uv/install.sh | sh
+          uv venv .venv
+          echo "VIRTUAL_ENV=.venv" >> $GITHUB_ENV
+          echo "$PWD/.venv/bin" >> $GITHUB_PATH
+
+      - name: 📦 Install dependencies
+        run: uv pip3 install -e ".[doc]"
 
       - name: Build documentation using sphinx
         run: make -C docs html
