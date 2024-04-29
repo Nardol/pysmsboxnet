@@ -37,7 +37,7 @@ dependencies = [
 [project.optional-dependencies]
 doc = [
     "Sphinx==7.3.7",
-    "furo==2024.1.29",
+    "furo==2024.4.27",
 ]
 lint = [
     "mypy==1.10.0",
