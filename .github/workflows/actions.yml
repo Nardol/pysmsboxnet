@@ -173,7 +173,7 @@ jobs:
         run: make -C docs html
 
       - name: deploy documentation
-        uses: JamesIves/github-pages-deploy-action@v4.6.0
+        uses: JamesIves/github-pages-deploy-action@v4.6.1
         with:
           folder: docs/_build/html
           target-folder: dev
