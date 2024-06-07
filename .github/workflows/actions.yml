@@ -199,7 +199,7 @@ jobs:
           echo "$PWD/.venv/bin" >> $GITHUB_PATH
 
       - name: 📦 Install dependencies
-        run: uv pip3 install -e ".[doc]"
+        run: uv pip install -e ".[doc]"
 
       - name: Build documentation using sphinx
         run: make -C docs html
