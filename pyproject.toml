@@ -60,7 +60,12 @@ test = [
 
 [tool.setuptools]
 platforms = ["any"]
-include-package-data = false
+
+[tool.setuptools.package-data]
+"pysmsboxnet" = ["py.typed"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
 
 [tool.setuptools_scm]
 version_file = "src/pysmsboxnet/_version.py"
