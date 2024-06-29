@@ -83,6 +83,8 @@ extend-exclude = [
     "build",
     "src/pysmsboxnet/_version.py",
 ]
+
+[tool.ruff.lint]
 ignore = [
     "D203",
     "D213",
@@ -109,6 +111,4 @@ extend-select = [
     "UP",
     "W",
 ]
-
-[tool.ruff.mccabe]
-max-complexity = 25
+mccabe = {max-complexity = 25}
