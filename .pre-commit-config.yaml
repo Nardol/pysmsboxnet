@@ -15,9 +15,10 @@ repos:
           - --skip="./.*"
           - --quiet-level=2
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.5.7
+    rev: v0.6.1
     hooks:
       - id: ruff
+        args: [--fix]
       - id: ruff-format
   - repo: https://github.com/adrienverge/yamllint.git
     rev: v1.35.1

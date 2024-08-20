@@ -7,6 +7,7 @@ from typing import Any
 
 import aiohttp
 import pytest
+
 from pysmsboxnet import exceptions
 from pysmsboxnet.api import Client
 
