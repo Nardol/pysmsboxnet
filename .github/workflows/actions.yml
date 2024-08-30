@@ -38,8 +38,6 @@ jobs:
         id: python
         with:
           python-version: 3.11
-          cache: pip
-          cache-dependency-path: pyproject.toml
           check-latest: true
 
       - name: Create and activate a virtual environment
