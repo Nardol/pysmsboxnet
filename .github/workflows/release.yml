@@ -74,7 +74,7 @@ jobs:
           fetch-depth: 0
 
       - name: 🛠 Set up Python3 and uv
-        uses: astral-sh/setup-uv@v1.0.7
+        uses: astral-sh/setup-uv@v2.0.0
         id: python
         with:
           enable-cache: true
