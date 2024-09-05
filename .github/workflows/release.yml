@@ -57,6 +57,8 @@ jobs:
 
       - name: 🚀 Deploy to PyPi
         uses: pypa/gh-action-pypi-publish@v1.10.1
+        with:
+          attestations: true
 
   deploy_doc:
     permissions:
