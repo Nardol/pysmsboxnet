@@ -33,18 +33,15 @@ jobs:
       - name: 📥 Checkout the repository
         uses: actions/checkout@v4.1.7
 
-      - name: 🛠 Set up Python 3
-        uses: actions/setup-python@v5.2.0
+      - name: 🛠 Set up UV and Python 3
+        uses: astral-sh/setup-uv@v1.0.7
         id: python
         with:
-          python-version: 3.11
-          check-latest: true
+          enable-cache: true
+          cache-suffix: lint
 
       - name: Create and activate a virtual environment
-        # uv doesn't (yet) allow us to install packages globally;
-        # we have to create and activate a virtual environment
         run: |
-          curl -LsSf https://astral.sh/uv/install.sh | sh
           uv venv .venv
           echo "VIRTUAL_ENV=.venv" >> $GITHUB_ENV
           echo "$PWD/.venv/bin" >> $GITHUB_PATH
@@ -75,34 +72,31 @@ jobs:
       - name: 📥 Checkout the repository
         uses: actions/checkout@v4.1.7
 
-      - name: 🛠️ Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v5.2.0
+      - name: 🛠️ Set up UV and Python ${{ matrix.python-version }}
+        uses: astral-sh/setup-uv@v1.0.7
         with:
-          python-version: ${{ matrix.python-version }}
-          check-latest: true
+          enable-cache: true
+          cache-suffix: test-${{ matrix.python-version }}-${{ matrix.os }}
+
+      - name: install Python ${{ matrix.python-version }}
+        run: uv python install ${{ matrix.python-version }}
 
       - name: Create and activate a virtual environment (Windows)
         if: ${{ runner.os == 'Windows' }}
-        # uv doesn't (yet) allow us to install packages globally;
-        # we have to create and activate a virtual environment
         run: |
-          irm https://astral.sh/uv/install.ps1 | iex
           uv venv .venv
           "VIRTUAL_ENV=.venv" | Out-File -FilePath $env:GITHUB_ENV -Append
           "$PWD/.venv/Scripts" | Out-File -FilePath $env:GITHUB_PATH -Append
 
       - name: Create and activate a virtual environment (Unix)
         if: ${{ runner.os != 'Windows' }}
-        # uv doesn't (yet) allow us to install packages globally;
-        # we have to create and activate a virtual environment
         run: |
-          curl -LsSf https://astral.sh/uv/install.sh | sh
           uv venv .venv
           echo "VIRTUAL_ENV=.venv" >> $GITHUB_ENV
           echo "$PWD/.venv/bin" >> $GITHUB_PATH
 
       - name: 📦 Install dependencies
-        run: pip3 install -e ".[test]"
+        run: uv pip install -e ".[test]"
 
       - name: 🏃 Run tests
         run: pytest tests
