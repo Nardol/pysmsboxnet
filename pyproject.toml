@@ -10,7 +10,7 @@ authors = [
 ]
 description = "Client to send SMS using www.smsbox.net API"
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 keywords = ["smsbox", "api", "sms"]
 license = {text = "MIT license"}
 classifiers = [
