@@ -70,18 +70,11 @@ jobs:
       - name: 🛠 Set up Python3 and uv
         uses: astral-sh/setup-uv@v2.1.2
         id: python
-        with:
-          enable-cache: true
-          cache-suffix: deploy-doc
-
-      - name: Create and activate a virtual environment
-        run: |
-          uv venv .venv
-          echo "VIRTUAL_ENV=.venv" >> $GITHUB_ENV
-          echo "$PWD/.venv/bin" >> $GITHUB_PATH
 
       - name: 📦 Install dependencies
-        run: uv pip install -e ".[doc]" "setuptools_scm>=8"
+        run: |
+          uv sync --frozen --extra doc
+          uv pip install  "setuptools_scm>=8"
 
       - name: Get version
         id: get-version
@@ -89,7 +82,7 @@ jobs:
           echo "VERSION=$(python3 -m setuptools_scm)" >> $GITHUB_OUTPUT
 
       - name: Build documentation using sphinx
-        run: make -C docs html
+        run: uv run make -C docs html
 
       - name: deploy documentation
         uses: JamesIves/github-pages-deploy-action@v4.6.4
