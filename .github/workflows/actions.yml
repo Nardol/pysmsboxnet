@@ -39,6 +39,7 @@ jobs:
         with:
           enable-cache: true
           cache-suffix: lint
+          cache-dependency-glob: pyproject.toml
 
       - name: 📦 Install dependencies
         run: uv sync --frozen --extra lint
@@ -70,6 +71,7 @@ jobs:
         uses: astral-sh/setup-uv@v2.1.2
         with:
           enable-cache: true
+          cache-dependency-glob: pyproject.toml
           cache-suffix: test-${{ matrix.python-version }}-${{ matrix.os }}
 
       - name: install Python ${{ matrix.python-version }}
