@@ -40,14 +40,8 @@ jobs:
           enable-cache: true
           cache-suffix: lint
 
-      - name: Create and activate a virtual environment
-        run: |
-          uv venv .venv
-          echo "VIRTUAL_ENV=.venv" >> $GITHUB_ENV
-          echo "$PWD/.venv/bin" >> $GITHUB_PATH
-
       - name: 📦 Install dependencies
-        run: uv pip install -e ".[lint]"
+        run: uv sync --frozen --extra lint
 
       - name: Pre-commit cache
         uses: actions/cache@v4.0.2
@@ -58,7 +52,7 @@ jobs:
             ${{ runner.os }}-pre-commit-
 
       - name: "🖤  Run pre-commits"
-        run: pre-commit run --all-files
+        run: uv run pre-commit run --all-files
 
   test:
     name: Test with Python ${{ matrix.python-version }} on ${{ matrix.os }}
@@ -81,29 +75,15 @@ jobs:
       - name: install Python ${{ matrix.python-version }}
         run: uv python install ${{ matrix.python-version }}
 
-      - name: Create and activate a virtual environment (Windows)
-        if: ${{ runner.os == 'Windows' }}
-        run: |
-          uv venv .venv
-          "VIRTUAL_ENV=.venv" | Out-File -FilePath $env:GITHUB_ENV -Append
-          "$PWD/.venv/Scripts" | Out-File -FilePath $env:GITHUB_PATH -Append
-
-      - name: Create and activate a virtual environment (Unix)
-        if: ${{ runner.os != 'Windows' }}
-        run: |
-          uv venv .venv
-          echo "VIRTUAL_ENV=.venv" >> $GITHUB_ENV
-          echo "$PWD/.venv/bin" >> $GITHUB_PATH
-
       - name: 📦 Install dependencies
-        run: uv pip install -e ".[test]"
+        run: uv sync --frozen --extra test
 
       - name: 🏃 Run tests
-        run: pytest tests
+        run: uv run pytest tests
 
       - name: Run code coverage
         if: ${{ matrix.python-version == '3.10' }}
-        run: pytest --cov=./src --cov-report=xml tests
+        run: uv run pytest --cov=./src --cov-report=xml tests
 
       - name: upload to codecov
         if: ${{ matrix.python-version == '3.10' }}
@@ -147,17 +127,12 @@ jobs:
       - name: 📥 Checkout the repository
         uses: actions/checkout@v4.1.7
 
-      - name: 🛠️ Set up Python 3
-        uses: actions/setup-python@v5.2.0
-        with:
-          python-version: 3.x
-          check-latest: true
-
-      - name: Install build
-        run: pip3 install build
+      - name: 🛠️ Set up Python 3 and UV
+        uses: astral-sh/setup-uv@v2.1.2
+        id: python
 
       - name: Run build
-        run: python3 -m build
+        run: uv build
 
   deploy_doc:
     if: github.event_name == 'push' && needs.changes.outputs.docfiles == 'true'
@@ -173,26 +148,14 @@ jobs:
           fetch-depth: 0
 
       - name: 🛠 Set up Python3
-        uses: actions/setup-python@v5.2.0
+        uses: astral-sh/setup-uv@v2.1.2
         id: python
-        with:
-          python-version: "3.11"
-          check-latest: true
-
-      - name: Create and activate a virtual environment
-        # uv doesn't (yet) allow us to install packages globally;
-        # we have to create and activate a virtual environment
-        run: |
-          curl -LsSf https://astral.sh/uv/install.sh | sh
-          uv venv .venv
-          echo "VIRTUAL_ENV=.venv" >> $GITHUB_ENV
-          echo "$PWD/.venv/bin" >> $GITHUB_PATH
 
       - name: 📦 Install dependencies
-        run: uv pip install -e ".[doc]"
+        run: uv sync --frozen --extra doc
 
       - name: Build documentation using sphinx
-        run: make -C docs html
+        run: uv run make -C docs html
 
       - name: deploy documentation
         uses: JamesIves/github-pages-deploy-action@v4.6.4

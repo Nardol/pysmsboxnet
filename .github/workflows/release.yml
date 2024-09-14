@@ -16,17 +16,11 @@ jobs:
           fetch-depth: 0
 
       - name: 🛠 Set up Python3
-        uses: actions/setup-python@v5.2.0
+        uses: astral-sh/setup-uv@v2.1.2
         id: python
-        with:
-          python-version: 3.x
-          check-latest: true
-
-      - name: 📦 Install dependencies
-        run: "python3 -m pip install build"
 
       - name: Build
-        run: "python -m build"
+        run: uv build
 
       - name: Upload dist
         uses: actions/upload-artifact@v4.4.0
