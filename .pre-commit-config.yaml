@@ -28,6 +28,10 @@ repos:
     rev: v4.0.0-alpha.8
     hooks:
       - id: prettier
+  - repo: https://github.com/astral-sh/uv-pre-commit
+    rev: 0.4.10
+    hooks:
+      - id: uv-lock
   - repo: local
     hooks:
       # Run mypy through a wrapper script in order to get the possible
