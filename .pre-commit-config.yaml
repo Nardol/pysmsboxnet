@@ -46,4 +46,6 @@ repos:
         require_serial: true
         files: ^(src/pysmsboxnet)/.+\.py$
 ci:
-  skip: ["mypy"]
+  skip:
+    - "mypy"
+    - "uv-lock"
