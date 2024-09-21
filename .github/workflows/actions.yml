@@ -52,7 +52,7 @@ jobs:
             ${{ runner.os }}-pre-commit-
 
       - name: "🖤  Run pre-commits"
-        run: uv run pre-commit run --all-files
+        run: uv run pre-commit run --show-diff-on-failure --all-files
 
   test:
     name: Test with Python ${{ matrix.python-version }} on ${{ matrix.os }}
