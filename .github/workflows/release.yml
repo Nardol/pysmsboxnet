@@ -12,19 +12,19 @@ jobs:
     name: Build and upload artifact
     steps:
       - name: 📥 Checkout the repository
-        uses: actions/checkout@v4.1.7
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
         with:
           fetch-depth: 0
 
       - name: 🛠 Set up Python3
-        uses: astral-sh/setup-uv@v3.1.0
+        uses: astral-sh/setup-uv@aeb46491c743cadc4cba26bb752a065b9c7593be # v3.1.0
         id: python
 
       - name: Build
         run: uv build
 
       - name: Upload dist
-        uses: actions/upload-artifact@v4.4.0
+        uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874 # v4.4.0
         with:
           name: dist_files
           path: dist
@@ -40,18 +40,18 @@ jobs:
       id-token: write
     steps:
       - name: 📥 Checkout the repository
-        uses: actions/checkout@v4.1.7
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
         with:
           fetch-depth: 0
 
       - name: Download dist artifact
-        uses: actions/download-artifact@v4.1.8
+        uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # v4.1.8
         with:
           name: dist_files
           path: dist
 
       - name: 🚀 Deploy to PyPi
-        uses: pypa/gh-action-pypi-publish@v1.10.2
+        uses: pypa/gh-action-pypi-publish@897895f1e160c830e369f9779632ebc134688e1b # v1.10.2
         with:
           attestations: true
 
@@ -64,12 +64,12 @@ jobs:
     name: Build and deploydocumentation
     steps:
       - name: 📥 Checkout the repository
-        uses: actions/checkout@v4.1.7
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
         with:
           fetch-depth: 0
 
       - name: 🛠 Set up Python3 and uv
-        uses: astral-sh/setup-uv@v3.1.0
+        uses: astral-sh/setup-uv@aeb46491c743cadc4cba26bb752a065b9c7593be # v3.1.0
         id: python
 
       - name: 📦 Install dependencies
@@ -84,7 +84,7 @@ jobs:
         run: uv run make -C docs html
 
       - name: deploy documentation
-        uses: JamesIves/github-pages-deploy-action@v4.6.4
+        uses: JamesIves/github-pages-deploy-action@920cbb300dcd3f0568dbc42700c61e2fd9e6139c # v4.6.4
         with:
           folder: docs/_build/html
           target-folder: ${{ steps.get-version.outputs.VERSION }}
@@ -107,7 +107,7 @@ jobs:
           </html>" > tmpindex/index.html
 
       - name: deploy updated index
-        uses: JamesIves/github-pages-deploy-action@v4.6.4
+        uses: JamesIves/github-pages-deploy-action@920cbb300dcd3f0568dbc42700c61e2fd9e6139c # v4.6.4
         with:
           folder: tmpindex
           target-folder: stable
