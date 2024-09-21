@@ -1,12 +1,18 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:recommended",
-    ":dependencyDashboard",
-    ":prHourlyLimitNone"
-  ],
+  "extends": ["config:best-practices"],
+  "prHourlyLimit": 0,
   "prConcurrentLimit": 0,
   "lockFileMaintenance": {
-    "enabled": true
-  }
+    "enabled": true,
+    "automerge": true
+  },
+  "logLevel": "warn",
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["minor", "patch", "digest"],
+      "automerge": true
+    }
+  ],
+  "schedule": ["before 5am every weekday"]
 }
