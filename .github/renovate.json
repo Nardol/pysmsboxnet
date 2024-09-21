@@ -7,7 +7,6 @@
     "enabled": true,
     "automerge": true
   },
-  "logLevel": "warn",
   "packageRules": [
     {
       "matchUpdateTypes": ["minor", "patch", "digest"],
