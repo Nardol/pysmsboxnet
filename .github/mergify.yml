@@ -2,7 +2,7 @@ pull_request_rules:
   - name: Automatic merge for pre-commit.ci
     conditions:
       - author=pre-commit-ci[bot]
-      - status-success=actions/lint
+      - check-success=lint
     actions:
       merge:
         method: rebase
