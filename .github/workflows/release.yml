@@ -84,7 +84,7 @@ jobs:
         run: uv run make -C docs html
 
       - name: deploy documentation
-        uses: JamesIves/github-pages-deploy-action@v4.6.4
+        uses: JamesIves/github-pages-deploy-action@v4.6.6
         with:
           folder: docs/_build/html
           target-folder: ${{ steps.get-version.outputs.VERSION }}
@@ -107,7 +107,7 @@ jobs:
           </html>" > tmpindex/index.html
 
       - name: deploy updated index
-        uses: JamesIves/github-pages-deploy-action@v4.6.4
+        uses: JamesIves/github-pages-deploy-action@v4.6.6
         with:
           folder: tmpindex
           target-folder: stable
