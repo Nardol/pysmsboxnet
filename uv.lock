@@ -673,7 +673,7 @@ wheels = [
 
 [[package]]
 name = "pysmsboxnet"
-version = "2024.6.2.dev116+g3e1f8c6.d20241010"
+version = "2024.6.2.dev117+g29359eb.d20241012"
 source = { editable = "." }
 dependencies = [
     { name = "aiohttp" },
@@ -707,7 +707,7 @@ requires-dist = [
     { name = "pytest", marker = "extra == 'test'", specifier = "==8.3.3" },
     { name = "pytest-asyncio", marker = "extra == 'test'", specifier = "==0.24.0" },
     { name = "pytest-cov", marker = "extra == 'test'", specifier = "==5.0.0" },
-    { name = "sphinx", marker = "extra == 'doc'", specifier = "==8.1.0" },
+    { name = "sphinx", marker = "extra == 'doc'", specifier = "==8.1.1" },
 ]
 
 [[package]]
@@ -831,7 +831,7 @@ wheels = [
 
 [[package]]
 name = "sphinx"
-version = "8.1.0"
+version = "8.1.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "alabaster" },
@@ -852,9 +852,9 @@ dependencies = [
     { name = "sphinxcontrib-serializinghtml" },
     { name = "tomli", marker = "python_full_version < '3.11'" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/9d/f3/e3c6fb6d015d6b0c5215d1a6e45276aa89b6685fc63a1b7ac230bcebcb4f/sphinx-8.1.0.tar.gz", hash = "sha256:109454425dbf4c78ecfdd481e56f078376d077edbda29804dba05c5161c8de06", size = 8183960 }
+sdist = { url = "https://files.pythonhosted.org/packages/ca/ff/60f166ff66cce657ef6275f013c9555a9a814a80e0a8e86707ac5fdbf247/sphinx-8.1.1.tar.gz", hash = "sha256:65e0ee8f76c9cbfd53ec8466ac8c87a73f9ed911767a8ef36c3bf3c522242bcd", size = 8184277 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/fb/21/143e5e4666432668fbd669f89ee0abc50040787f932bd30befd0f7a42a6e/sphinx-8.1.0-py3-none-any.whl", hash = "sha256:3202bba95697b9fc4371a07d6d457239de9860244ce235283149f817c253fd2f", size = 3486829 },
+    { url = "https://files.pythonhosted.org/packages/40/00/6ad5125a87d7814f6fef41e3b0d50fa37908699f88d2f1789b6066fd9ca2/sphinx-8.1.1-py3-none-any.whl", hash = "sha256:84db3c819ed4ae63c6b1847f64576fcffe9d4f40670eefffcd215f9abc992393", size = 3486824 },
 ]
 
 [[package]]
