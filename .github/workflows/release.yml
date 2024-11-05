@@ -17,7 +17,7 @@ jobs:
           fetch-depth: 0
 
       - name: 🛠 Set up Python3
-        uses: astral-sh/setup-uv@v3.2.0
+        uses: astral-sh/setup-uv@v3.2.1
         id: python
 
       - name: Build
@@ -69,7 +69,7 @@ jobs:
           fetch-depth: 0
 
       - name: 🛠 Set up Python3 and uv
-        uses: astral-sh/setup-uv@v3.2.0
+        uses: astral-sh/setup-uv@v3.2.1
         id: python
 
       - name: 📦 Install dependencies
