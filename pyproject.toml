@@ -1,6 +1,6 @@
 [build-system]
-requires = ["setuptools>=64", "setuptools_scm>=8"]
-build-backend = "setuptools.build_meta"
+requires = ["hatchling==1.26.3", "hatch-vcs==0.4.0"]
+build-backend = "hatchling.build"
 
 [project]
 name = "pysmsboxnet"
@@ -50,6 +50,9 @@ test = [
     "pytest-asyncio==0.24.0",
     "pytest-cov==6.0.0",
 ]
+ci = [
+    "hatch-vcs==0.4.0"
+]
 
 [project.urls]
 "Source code" = "https://github.com/Nardol/pysmsboxnet"
@@ -58,17 +61,20 @@ test = [
 "SMSBox API 1.1 doc" = "https://en.smsbox.net/docs/doc-API-SMSBOX-1.1-EN.html"
 "SMSBox account API doc" = "https://en.smsbox.net/docs/doc-APIFunctions-SMSBOX-FR.html"
 
-[tool.setuptools]
-platforms = ["any"]
+[tool.hatch.version]
+source = "vcs"
 
-[tool.setuptools.package-data]
-"pysmsboxnet" = ["py.typed"]
+[tool.hatch.build.hooks.vcs]
+version-file = "src/pysmsboxnet/_version.py"
 
-[tool.setuptools.packages.find]
-where = ["src"]
-
-[tool.setuptools_scm]
-version_file = "src/pysmsboxnet/_version.py"
+[tool.hatch.build]
+exclude = [
+    ".github",
+    "codecov.yml",
+    "example.py",
+    "script",
+    ".pre-commit-config.yaml "
+]
 
 [tool.ruff]
 extend-exclude = [

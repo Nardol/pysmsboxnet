@@ -73,12 +73,12 @@ jobs:
         id: python
 
       - name: 📦 Install dependencies
-        run: uv sync --frozen --extra doc
+        run: uv sync --frozen --extra doc --extra ci
 
       - name: Get version
         id: get-version
         run: |
-          echo "VERSION=$(uv run --no-project --isolated --with "setuptools_scm>=8" python3 -m setuptools_scm)" >> $GITHUB_OUTPUT
+          echo "VERSION=$(uv run hatchling version)" >> $GITHUB_OUTPUT
 
       - name: Build documentation using sphinx
         run: uv run make -C docs html
