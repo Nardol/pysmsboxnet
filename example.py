@@ -1,8 +1,8 @@
 """Example script."""
 
 import asyncio
+import sys
 from os import getenv
-from sys import exit
 
 import aiohttp
 
@@ -47,6 +47,6 @@ SMS_RECIPIENT = "9990001"
 
 if API_KEY == "nokey":
     print("No key specified, exiting")
-    exit(1)
+    sys.exit(1)
 
 asyncio.run(main())
