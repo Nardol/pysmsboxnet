@@ -53,3 +53,4 @@ ci:
   skip:
     - "mypy"
     - "uv-lock"
+    - "renovate-config-validator"
