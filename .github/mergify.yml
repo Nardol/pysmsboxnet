@@ -3,10 +3,10 @@ pull_request_rules:
     conditions:
       - author=app/pre-commit-ci
       - base=main
-      - status-success=pre-commit.ci - pr
-      - check-success=Lint
-      - check-success=CodeQL
-      - check-success=Dependency review
+      - status-success="pre-commit.ci - pr"
+      - check-success="Lint"
+      - check-success="CodeQL"
+      - check-success="Dependency review"
       - -draft
     actions:
       merge:
