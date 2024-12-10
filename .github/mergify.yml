@@ -1,8 +1,13 @@
 pull_request_rules:
-  - name: Automatic merge for pre-commit.ci
+  - name: Automatic merge for pre-commit-ci
     conditions:
-      - author~=^pre-commit-ci\[bot\]$
-      - check-success="Actions / Lint"
+      - author=pre-commit-ci[bot]
+      - base=main
+      - check-success="Lint"
+      - check-success="CodeQL"
+      - check-success="Dependency review"
+      - -draft
     actions:
       merge:
         method: rebase
+      delete_head_branch:
