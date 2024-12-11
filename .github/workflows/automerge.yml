@@ -9,6 +9,11 @@ permissions:
   contents: write
 
 jobs:
+  debug-auto-merge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: debug author
+        run: echo "${{ github.event.pull_request.user.login }}"
   auto-merge:
     runs-on: ubuntu-latest
     if: ->
