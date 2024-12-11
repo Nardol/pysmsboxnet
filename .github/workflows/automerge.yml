@@ -11,7 +11,9 @@ permissions:
 jobs:
   auto-merge:
     runs-on: ubuntu-latest
-    if: ${{ github.actor == 'pre-commit-ci[bot]' }}
+    if: ->
+      ${{ github.actor == 'pre-commit-ci[bot]'
+      || github.event.pull_request.user.login == 'pre-commit-ci[bot]' }}
     steps:
       - name: Enable auto-merge
         run: gh pr merge --auto --rebase --delete-branch "$PR_URL"
