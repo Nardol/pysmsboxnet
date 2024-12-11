@@ -9,6 +9,15 @@ permissions:
   contents: write
 
 jobs:
+  debug:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Debug Information
+        run: |
+          echo "Actor: ${{ github.actor }}"
+          echo "Event: ${{ github.event_name }}"
+          echo "Action: ${{ github.event.action }}"
+
   auto-merge:
     runs-on: ubuntu-latest
     if: ${{ github.actor == 'pre-commit-ci[bot]' }}
