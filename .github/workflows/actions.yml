@@ -162,3 +162,19 @@ jobs:
         with:
           folder: docs/_build/html
           target-folder: dev
+
+  alls_green:
+    name: Check if all checks are green
+    if: always()
+    needs:
+      - lint
+      - test
+      - test_install
+      - test_build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Decide if checks succeeded or not
+        uses: re-actors/alls-green@v1.2.2
+        with:
+          allowed-skips: changes
+          jobs: ${{ toJSON(needs) }}
