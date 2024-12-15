@@ -840,7 +840,7 @@ wheels = [
 
 [[package]]
 name = "pysmsboxnet"
-version = "2024.6.2.dev193+gd2d287c.d20241213"
+version = "2024.6.2.dev195+g4bb20aa.d20241215"
 source = { editable = "." }
 dependencies = [
     { name = "aiohttp" },
