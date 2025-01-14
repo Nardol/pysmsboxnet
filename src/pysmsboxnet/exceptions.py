@@ -26,8 +26,7 @@ class AuthException(SMSBoxException):
     def __init__(self) -> None:
         """Initialize authorization error, no message to specify."""
         super().__init__(
-            "Unable to authenticate,"
-            " check if your API key is valid or not suspended."
+            "Unable to authenticate, check if your API key is valid or not suspended."
         )
 
 
