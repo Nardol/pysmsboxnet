@@ -73,7 +73,7 @@ jobs:
         id: python
 
       - name: 📦 Install dependencies
-        run: uv sync --frozen --extra doc --extra ci
+        run: uv sync --frozen --group ci
 
       - name: Get version
         id: get-version
