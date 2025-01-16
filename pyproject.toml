@@ -76,6 +76,9 @@ exclude = [
     ".pre-commit-config.yaml "
 ]
 
+[tool.uv]
+required-version = ">=0.5.19"
+
 [tool.ruff]
 extend-exclude = [
     ".venv",
