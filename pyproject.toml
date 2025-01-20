@@ -41,7 +41,7 @@ doc = [
 ]
 lint = [
     "mypy==1.14.1",
-    "pre-commit==4.0.1",
+    "pre-commit==4.1.0",
 ]
 test = [
     "aresponses==3.0.0",
