@@ -60,7 +60,7 @@ jobs:
     runs-on: ${{ matrix.os }}-latest
     strategy:
       matrix:
-        python-version: [3.11, 3.12]
+        python-version: [3.11, 3.12, 3.13]
         os: [ubuntu, windows, macos]
     steps:
       - name: 📥 Checkout the repository
@@ -93,7 +93,7 @@ jobs:
     runs-on: ${{ matrix.os }}-latest
     strategy:
       matrix:
-        python-version: [3.11, 3.12]
+        python-version: [3.11, 3.12, 3.13]
         os: [ubuntu, windows, macos]
     steps:
       - name: 📥 Checkout the repository
