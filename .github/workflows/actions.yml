@@ -85,7 +85,7 @@ jobs:
         run: uv run pytest --cov=./src --cov-report=xml tests
 
       - name: upload to codecov
-        uses: codecov/codecov-action@v5.3.1
+        uses: codecov/codecov-action@v5.4.0
 
   test_install:
     name: "Test install with Python ${{matrix.python-version}} ${{matrix.os}}"
