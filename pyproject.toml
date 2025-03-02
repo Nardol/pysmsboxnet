@@ -45,7 +45,7 @@ lint = [
 test = [
     "aresponses==3.0.0",
     "coverage==7.6.12",
-    "pytest==8.3.4",
+    "pytest==8.3.5",
     "pytest-asyncio==0.25.3",
     "pytest-cov==6.0.0",
 ]
