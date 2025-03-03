@@ -35,7 +35,7 @@ dependencies = [
 
 [dependency-groups]
 doc = [
-    "Sphinx==8.2.2",
+    "Sphinx==8.2.3",
     "furo==2024.8.6",
 ]
 lint = [

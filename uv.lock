@@ -751,11 +751,11 @@ requires-dist = [{ name = "aiohttp", specifier = ">=3.8.0,<4.0" }]
 ci = [
     { name = "furo", specifier = "==2024.8.6" },
     { name = "hatch-vcs", specifier = "==0.4.0" },
-    { name = "sphinx", specifier = "==8.2.2" },
+    { name = "sphinx", specifier = "==8.2.3" },
 ]
 doc = [
     { name = "furo", specifier = "==2024.8.6" },
-    { name = "sphinx", specifier = "==8.2.2" },
+    { name = "sphinx", specifier = "==8.2.3" },
 ]
 lint = [
     { name = "mypy", specifier = "==1.15.0" },
@@ -910,7 +910,7 @@ wheels = [
 
 [[package]]
 name = "sphinx"
-version = "8.2.2"
+version = "8.2.3"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "alabaster" },
@@ -931,9 +931,9 @@ dependencies = [
     { name = "sphinxcontrib-qthelp" },
     { name = "sphinxcontrib-serializinghtml" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/3f/3f/f04023981aba4b1ec9dace4be48e444a1589b7aba20b53c35ecab2683350/sphinx-8.2.2.tar.gz", hash = "sha256:4579d91485326543df44307ba36ae6150a47fee070e89e99bec3654aac5607b8", size = 8322010 }
+sdist = { url = "https://files.pythonhosted.org/packages/38/ad/4360e50ed56cb483667b8e6dadf2d3fda62359593faabbe749a27c4eaca6/sphinx-8.2.3.tar.gz", hash = "sha256:398ad29dee7f63a75888314e9424d40f52ce5a6a87ae88e7071e80af296ec348", size = 8321876 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/19/e3/a332f27a8770cacd0939f9db317603d3f4ab95a815ac51cba23552a5f4be/sphinx-8.2.2-py3-none-any.whl", hash = "sha256:5207bcd13a7bd1083edd067671e308bca5cd0bda2bad614f79a24acbd0f51da5", size = 3589733 },
+    { url = "https://files.pythonhosted.org/packages/31/53/136e9eca6e0b9dc0e1962e2c908fbea2e5ac000c2a2fbd9a35797958c48b/sphinx-8.2.3-py3-none-any.whl", hash = "sha256:4405915165f13521d875a8c29c8970800a0141c14cc5416a38feca4ea5d9b9c3", size = 3589741 },
 ]
 
 [[package]]
