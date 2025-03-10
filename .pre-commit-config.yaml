@@ -15,7 +15,7 @@ repos:
           - --skip="./.*"
           - --quiet-level=2
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.9.7
+    rev: v0.9.10
     hooks:
       - id: ruff
         args: [--fix]
@@ -29,11 +29,11 @@ repos:
     hooks:
       - id: prettier
   - repo: https://github.com/astral-sh/uv-pre-commit
-    rev: 0.6.2
+    rev: 0.6.5
     hooks:
       - id: uv-lock
   - repo: https://github.com/renovatebot/pre-commit-hooks
-    rev: 39.178.1
+    rev: 39.194.0
     hooks:
       - id: renovate-config-validator
   - repo: local
