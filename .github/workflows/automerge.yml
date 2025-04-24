@@ -1,3 +1,5 @@
+---
+# yamllint disable rule:line-length
 name: Auto-merge pre-commit-ci PRs
 
 on:

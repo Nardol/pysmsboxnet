@@ -1,5 +1,6 @@
 ---
 # Taken from pyhaversion
+# yamllint disable rule:line-length
 name: Actions
 
 on:
