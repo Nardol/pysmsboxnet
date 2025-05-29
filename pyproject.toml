@@ -39,7 +39,7 @@ doc = [
     "furo==2024.8.6",
 ]
 lint = [
-    "mypy==1.15.0",
+    "mypy==1.16.0",
     "pre-commit==4.2.0",
 ]
 test = [
