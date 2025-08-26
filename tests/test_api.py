@@ -329,4 +329,3 @@ async def test_error_credits(aresponses: Any) -> None:
         )
         with pytest.raises(exceptions.SMSBoxException):
             await sms.get_credits()
-
