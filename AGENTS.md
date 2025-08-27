@@ -42,3 +42,5 @@
 
 - Secrets: never commit keys. Use `SMSBOX_API_KEY` via environment (see `example.py`).
 - Network calls: reuse an injected `aiohttp.ClientSession`; do not create global sessions.
+- Logging: never log API keys or tokens; add log redaction for sensitive fields when configuring logging.
+- Prevention: enable secret scanning in pre-commit (e.g., `detect-secrets` or `gitleaks`) and rotate any exposed keys immediately.
