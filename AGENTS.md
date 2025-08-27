@@ -5,7 +5,7 @@
 - `src/pysmsboxnet/`: Library code — `api.py` (async `Client`), `exceptions.py`, `_version.py` (generated), `py.typed`.
 - `tests/`: Pytest suite (async via `pytest-asyncio`), e.g., `tests/test_api.py`.
 - `docs/`: Sphinx sources; build to `docs/_build/html`.
-- `script/`: Helper scripts, e.g., `run-in-env.sh` for type-checking in the active venv.
+- `scripts/`: Helper scripts, e.g., `run-in-env.sh` for type-checking in the active venv.
 - `example.py`: Minimal usage; reads `SMSBOX_API_KEY` from the environment.
 
 ## Build, Test, and Development Commands

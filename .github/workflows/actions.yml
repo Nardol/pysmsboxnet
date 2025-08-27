@@ -117,7 +117,7 @@ jobs:
           SMSBOX_API_KEY: ${{ secrets.SMSBOX_API_KEY }}
           RUNNER_TEMP: ${{ runner.temp }}
         run: |
-          python3 script/copy_example.py
+          python3 scripts/copy_example.py
           cd ${{ runner.temp }}/test_example
           python3 ${{ runner.temp }}/test_example/example.py
 

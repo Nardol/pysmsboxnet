@@ -44,11 +44,16 @@ repos:
       # shell.
       - id: mypy
         name: mypy
-        entry: script/run-in-env.sh mypy
+        entry: scripts/run-in-env.sh mypy
         language: script
         types: [python]
         require_serial: true
         files: ^(src/pysmsboxnet)/.+\.py$
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.18.4
+    hooks:
+      - id: gitleaks
+        args: ["protect", "--staged", "--redact"]
 ci:
   skip:
     - "mypy"
