@@ -11,6 +11,8 @@ import pytest
 from pysmsboxnet import exceptions
 from pysmsboxnet.api import Client
 
+# Sessions rely on the async context manager for cleanup.
+
 # Constants
 SMSBOX_HOST = "api.smsbox.pro"
 SMSBOX_API_KEY = "pub-xxxxx-xxxxx-xxxx-xxxx-xxxxx-xxxxxxxx"
@@ -41,7 +43,6 @@ async def test_parameters_error(aresponses: Any) -> None:
                 SEND_MODE,
                 {"strategy": SMSBOX_STRATEGY},
             )
-            await session.close()
 
 
 @pytest.mark.asyncio
@@ -69,7 +70,6 @@ async def test_bad_auth(aresponses: Any) -> None:
                 SEND_MODE,
                 {"strategy": SMSBOX_STRATEGY},
             )
-            await session.close()
 
 
 @pytest.mark.asyncio
@@ -97,7 +97,6 @@ async def test_billing(aresponses: Any) -> None:
                 SEND_MODE,
                 {"strategy": SMSBOX_STRATEGY},
             )
-            await session.close()
 
 
 @pytest.mark.asyncio
@@ -125,7 +124,6 @@ async def test_bad_dest(aresponses: Any) -> None:
                 SEND_MODE,
                 {"strategy": SMSBOX_STRATEGY},
             )
-            await session.close()
 
 
 @pytest.mark.asyncio
@@ -153,7 +151,6 @@ async def test_internal_error(aresponses: Any) -> None:
                 SEND_MODE,
                 {"strategy": SMSBOX_STRATEGY},
             )
-            await session.close()
 
 
 @pytest.mark.asyncio
@@ -181,7 +178,6 @@ async def test_other_error(aresponses: Any) -> None:
                 SEND_MODE,
                 {"strategy": SMSBOX_STRATEGY},
             )
-            await session.close()
 
 
 @pytest.mark.asyncio
@@ -209,7 +205,6 @@ async def test_http_error(aresponses: Any) -> None:
                 SEND_MODE,
                 {"strategy": SMSBOX_STRATEGY},
             )
-            await session.close()
 
 
 @pytest.mark.asyncio
@@ -237,7 +232,6 @@ async def test_ok(aresponses: Any) -> None:
             {"strategy": SMSBOX_STRATEGY},
         )
         assert 0 == result
-        await session.close()
 
 
 @pytest.mark.asyncio
@@ -267,7 +261,6 @@ async def test_ok_with_id(aresponses: Any) -> None:
             {"strategy": SMSBOX_STRATEGY, "id": "1"},
         )
         assert msg_id == result
-        await session.close()
 
 
 @pytest.mark.asyncio
@@ -292,7 +285,6 @@ async def test_credits(aresponses: Any) -> None:
         )
         result = await sms.get_credits()
         assert account_credits == result
-        await session.close()
 
 
 @pytest.mark.asyncio
@@ -315,7 +307,6 @@ async def test_exception_credits(aresponses: Any) -> None:
         )
         with pytest.raises(exceptions.SMSBoxException):
             await sms.get_credits()
-            await session.close()
 
 
 @pytest.mark.asyncio
@@ -338,4 +329,3 @@ async def test_error_credits(aresponses: Any) -> None:
         )
         with pytest.raises(exceptions.SMSBoxException):
             await sms.get_credits()
-            await session.close()
