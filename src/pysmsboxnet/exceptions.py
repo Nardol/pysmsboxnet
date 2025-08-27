@@ -43,7 +43,7 @@ class WrongRecipientException(SMSBoxException):
 
     def __init__(self) -> None:
         """Initialize when recipient is bad, no message to specify."""
-        super().__init__("Wrong recipient(s), not valid or missformated")
+        super().__init__("Wrong recipient(s), not valid or misformatted")
 
 
 class InternalErrorException(SMSBoxException):
