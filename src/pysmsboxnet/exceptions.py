@@ -1,7 +1,7 @@
 """Exceptions for SMSBox API."""
 
 
-class SMSBoxException(Exception):
+class SMSBoxException(BaseException):
     """Base exception for SMSBox API."""
 
     def __init__(self, message: str = "Unknown API error"):
