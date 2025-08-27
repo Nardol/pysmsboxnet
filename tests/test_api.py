@@ -237,7 +237,7 @@ async def test_ok(aresponses: Any) -> None:
 @pytest.mark.asyncio
 async def test_ok_with_id(aresponses: Any) -> None:
     """Test result OK with a random ID."""
-    # Get a random integer which will serv as the message ID
+    # Get a random integer which will serve as the message ID
     msg_id = random.randint(100000000000, 999999999999)
     aresponses.add(
         "api.smsbox.pro",
@@ -265,8 +265,8 @@ async def test_ok_with_id(aresponses: Any) -> None:
 
 @pytest.mark.asyncio
 async def test_credits(aresponses: Any) -> None:
-    """Test credits async property returning a random number."""
-    # Get a random float which will serv as the number of credits
+    """Test credits async method returning a random number."""
+    # Get a random float which will serve as the number of credits
     account_credits = round(random.uniform(0, 9999), 1)
     aresponses.add(
         "api.smsbox.pro",
@@ -289,7 +289,7 @@ async def test_credits(aresponses: Any) -> None:
 
 @pytest.mark.asyncio
 async def test_exception_credits(aresponses: Any) -> None:
-    """Test get credits async property raising exception."""
+    """Test get_credits async method raising an exception."""
     aresponses.add(
         "api.smsbox.pro",
         "/api.php",
@@ -311,7 +311,7 @@ async def test_exception_credits(aresponses: Any) -> None:
 
 @pytest.mark.asyncio
 async def test_error_credits(aresponses: Any) -> None:
-    """Test get credits async property returning strange string."""
+    """Test get_credits async method returning an unexpected string."""
     aresponses.add(
         "api.smsbox.pro",
         "/api.php",

@@ -1,8 +1,8 @@
 Welcome to PySMSBoxNet's documentation!
 =======================================
 
-This Python library implement the `SMSBox <https://www.smsbox.net>`_ API.
-The main function is to send a SMS but you can also get your remaining credits.
+This Python library implements the `SMSBox <https://www.smsbox.net>`_ API.
+The primary feature is sending SMS messages, and you can also retrieve your remaining credits.
 
 .. toctree::
    :maxdepth: 2
