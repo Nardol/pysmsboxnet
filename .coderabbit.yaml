@@ -13,6 +13,9 @@ reviews:
     github-checks:
       timeout_ms: 120000
   high_level_summary: true
+  # Suppress the automatic "Review skipped" status comment when auto reviews are disabled.
+  # Note: This may also disable per-review status details.
+  review_status: false
   path_filters:
     - src/**
     - tests/**
