@@ -24,12 +24,17 @@ paths:
     - ".ruff_cache/**"
     - ".mypy_cache/**"
     - ".pytest_cache/**"
+    - "**/__pycache__/**"
+    - "**/.cache/**"
     - "src/pysmsboxnet/_version.py"
     - "src/pysmsboxnet.egg-info/**"
     - "pysmsboxnet.egg-info/**"
     - ".venv/**"
+    - "venv/**"
+    - "build/**"
     - "dist/**"
     - "node_modules/**"
+    - "**/*.dist-info/**"
 
 comments:
   # Always add a high-level summary comment
