@@ -11,31 +11,31 @@ from pysmsboxnet.api import Client
 
 
 async def main():
-    """Execute main instructions."""
+    """Run the example."""
     async with aiohttp.ClientSession() as session:
         sms = Client(session, "api.smsbox.pro", API_KEY)
 
         try:
             # To send a message
-            # we define the strategy in the dict passed as last parameter
-            # In this dict, we also ask the API to return the ID of message sent
-            # With the parameter id set to 1
-            # If we don't set id, the send function will return 0
-            # In case of failure an exception will be thrown
+            # define the strategy in the dict passed as the last parameter
+            # also ask the API to return the ID of the sent message
+            # by setting the id parameter to 1
+            # if id is not set, the send function will return 0
+            # on failure, an exception is raised
             # Uncomment it if you need it
             # msgID = await sms.send(
             #     SMS_RECIPIENT, "Test message.", "expert", {"strategy": "2", "id": "1"}
             # )
-            # We display the message is sent and its ID
+            # Print confirmation and the message ID
             # print(f"SMS sent, ID : {msgID}")
 
-            # We get remaining credits
+            # Get the remaining credits
             remaining_credits = await sms.get_credits()
             # print(f"Remaining credits: {remaining_credits}")
             if remaining_credits > 0:
                 print("There are remaining credits")
             else:
-                print("No remaining credit")
+                print("No remaining credits")
         except exceptions.SMSBoxException as e:
             print(f"Exception: {e}")
             await session.close()

@@ -24,7 +24,7 @@ A clear and concise description of what you expected to happen.
 If applicable, add Python traceback to help explain your problem.
 
 **Python version**
-Specify Python version used
+Specify the Python version used
 
 **Additional context**
 Add any other context about the problem here.
