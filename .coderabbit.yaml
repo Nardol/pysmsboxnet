@@ -29,6 +29,7 @@ paths:
     - "src/pysmsboxnet/_version.py"
     - "src/pysmsboxnet.egg-info/**"
     - "pysmsboxnet.egg-info/**"
+    - "**/*.egg-info/**"
     - ".venv/**"
     - "venv/**"
     - "build/**"
