@@ -1,4 +1,4 @@
-"""smsbox.net api client module."""
+"""SMSBox API client module."""
 
 from __future__ import annotations
 
@@ -21,7 +21,7 @@ class Client:
     """
 
     def __init__(self, session: ClientSession, host: str, cle_api: str):
-        """Initialize the SMS."""
+        """Initialize the client."""
         self.host = host
         self.cle_api = cle_api
         self.session = session
@@ -81,7 +81,7 @@ class Client:
     async def send(
         self, dest: str, msg: str, mode: str, parameters: dict[str, str] | None = None
     ) -> int:
-        """Send a SMS.
+        """Send an SMS.
 
         :param str dest: SMS recipient(s); see the API documentation for the required format
         :param str msg: the SMS message
@@ -108,7 +108,7 @@ class Client:
         return int(resp_ok[1])
 
     async def get_credits(self) -> float:
-        """Return float number of credits.
+        """Return the number of credits as a float.
 
         :raises pysmsboxnet.exceptions.SMSBoxException: result is not OK
         """
