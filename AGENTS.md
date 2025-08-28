@@ -1,8 +1,14 @@
 # Repository Guidelines
 
+## Contributor Quickstart
+
+- Install deps: `uv sync --group lint --group test --group doc`.
+- Install hooks: `uv run pre-commit install`; then `uv run pre-commit run -a`.
+- Run tests: `uv run pytest` (example: `uv run pytest -k test_ok`).
+
 ## Project Structure & Module Organization
 
-- `src/pysmsboxnet/`: Library code — `api.py` (async `Client`), `exceptions.py`, `_version.py` (generated), `py.typed`.
+- `src/pysmsboxnet/`: Library code — `api.py` (async `Client`), `exceptions.py`, `_version.py` (generated, managed by VCS; do not edit), `py.typed`.
 - `tests/`: Pytest suite (async via `pytest-asyncio`), e.g., `tests/test_api.py`.
 - `docs/`: Sphinx sources; build to `docs/_build/html`.
 - `scripts/`: Helper scripts, e.g., `run-in-env.sh` for type-checking in the active venv.
@@ -11,12 +17,14 @@
 ## Build, Test, and Development Commands
 
 - Setup: `uv sync --group lint --group test --group doc` (Python ≥ 3.11).
+- Pre-commit: `uv run pre-commit install` (first time), then `uv run pre-commit run --all-files`.
 - Lint/format: `uv run pre-commit run --all-files` (ruff, ruff-format, codespell, etc.).
 - Type-check: `uv run mypy src/pysmsboxnet`.
-- Test: `uv run pytest` or a single test `uv run pytest tests/test_api.py::test_ok`.
+- Test: `uv run pytest` or a single test `uv run pytest tests/test_api.py::test_ok` (addopts are set in `pyproject.toml`).
 - Coverage: `uv run pytest --cov=./src --cov-report=term-missing`.
 - Build package: `uv build`.
 - Build docs: `uv run make -C docs html`.
+- Secret scan: `uv run pre-commit run gitleaks --all-files`.
 
 ## Coding Style & Naming Conventions
 
@@ -35,7 +43,7 @@
 ## Commit & Pull Request Guidelines
 
 - Commits: follow Conventional Commits (e.g., `feat:`, `fix:`, `refactor:`, `chore(deps):`).
-- PRs: provide a clear description, link related issues, include tests/docs updates, and note behavior changes.
+- PRs: provide a clear description, link related issues, include tests/docs updates, and note behavior changes. CI runs on Linux/Windows/macOS (Python 3.11–3.13).
 - Before opening: run `uv run pre-commit run -a` and `uv run pytest`; ensure CI parity locally.
 
 ## Security & Configuration Tips
