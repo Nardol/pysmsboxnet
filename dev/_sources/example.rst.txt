@@ -1,8 +1,8 @@
 Usage example
 =============
 
-The following example can be found on the `GitHub repository <https://github.com/Nardol/pysmsboxnet>`_.
-Even if it is a little bit different, its principle is the same.
+The following example can be found in the `GitHub repository <https://github.com/Nardol/pysmsboxnet>`_.
+It may be slightly different, but the principle is the same.
 
 ..  code-block:: python
 
@@ -17,7 +17,7 @@ Even if it is a little bit different, its principle is the same.
 
    async def main():
        async with aiohttp.ClientSession() as session:
-       # After initializing a AIOHTTP client session, we initialize a Client object
+           # After initializing an AIOHTTP client session, initialize a Client object
            sms = Client(session, "api.smsbox.pro", API_KEY)
 
            try:
@@ -26,15 +26,15 @@ Even if it is a little bit different, its principle is the same.
                print(f"Remaining credits before: {credits}")
 
                # To send a message
-               # we define the strategy in the dict passed as last parameter
-               # In this dict, we also ask the API to return the ID of message sent
-               # With the parameter id set to 1
-               # If we don't set id, the send function will return 0
-               # In case of failure an exception will be thrown
+               # define the strategy in the dict passed as the last parameter
+               # also ask the API to return the ID of the sent message
+               # with the parameter id set to 1
+               # if we don't set id, the send function will return 0
+               # in case of failure an exception will be thrown
                msgID = await sms.send(
                    SMS_RECIPIENT, "Test message.", "expert", {"strategy": "2", "id": "1"}
                )
-               # We display the message is sent and the ID
+               # Display that the message was sent and its ID
                print(f"SMS sent, ID : {msgID}")
 
                # We get remaining credits
@@ -43,7 +43,7 @@ Even if it is a little bit different, its principle is the same.
                if credits > 0:
                    print("There are remaining credits")
                else:
-                   print("No remaining credit")
+                   print("No remaining credits")
            except exceptions.SMSBoxException as e:
                print(f"Exception: {e}")
                await session.close()
@@ -51,9 +51,9 @@ Even if it is a little bit different, its principle is the same.
 
    # Specify the API key
    API_KEY = "xxx"
-   SMS_RECIPIENT = "9990001" # a sandbox number for a succeffull 0.5 credit SMS
+   SMS_RECIPIENT = "9990001"  # a sandbox number for a successful 0.5 credit SMS
 
    asyncio.run(main())
 
-This example shows all actual possibilities of this libraries.
+This example shows all current capabilities of this library.
 If you want to add more, go to the next section.

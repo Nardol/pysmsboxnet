@@ -199,7 +199,7 @@
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="install.html">installing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="install.html#updating">Updating</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pysmsboxnet.html">pysmsboxnet</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pysmsboxnet.html#exceptions">Exceptions</a></li>
@@ -243,8 +243,8 @@
         <article role="main" id="furo-main-content">
           <section id="usage-example">
 <h1>Usage example<a class="headerlink" href="#usage-example" title="Link to this heading">¶</a></h1>
-<p>The following example can be found on the <a class="reference external" href="https://github.com/Nardol/pysmsboxnet">GitHub repository</a>.
-Even if it is a little bit different, its principle is the same.</p>
+<p>The following example can be found in the <a class="reference external" href="https://github.com/Nardol/pysmsboxnet">GitHub repository</a>.
+It may be slightly different, but the principle is the same.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sys</span><span class="w"> </span><span class="kn">import</span> <span class="n">exit</span>
 
@@ -256,7 +256,7 @@ Even if it is a little bit different, its principle is the same.</p>
 
 <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
     <span class="k">async</span> <span class="k">with</span> <span class="n">aiohttp</span><span class="o">.</span><span class="n">ClientSession</span><span class="p">()</span> <span class="k">as</span> <span class="n">session</span><span class="p">:</span>
-    <span class="c1"># After initializing a AIOHTTP client session, we initialize a Client object</span>
+        <span class="c1"># After initializing an AIOHTTP client session, initialize a Client object</span>
         <span class="n">sms</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">session</span><span class="p">,</span> <span class="s2">&quot;api.smsbox.pro&quot;</span><span class="p">,</span> <span class="n">API_KEY</span><span class="p">)</span>
 
         <span class="k">try</span><span class="p">:</span>
@@ -265,15 +265,15 @@ Even if it is a little bit different, its principle is the same.</p>
             <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Remaining credits before: </span><span class="si">{</span><span class="n">credits</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
             <span class="c1"># To send a message</span>
-            <span class="c1"># we define the strategy in the dict passed as last parameter</span>
-            <span class="c1"># In this dict, we also ask the API to return the ID of message sent</span>
-            <span class="c1"># With the parameter id set to 1</span>
-            <span class="c1"># If we don&#39;t set id, the send function will return 0</span>
-            <span class="c1"># In case of failure an exception will be thrown</span>
+            <span class="c1"># define the strategy in the dict passed as the last parameter</span>
+            <span class="c1"># also ask the API to return the ID of the sent message</span>
+            <span class="c1"># with the parameter id set to 1</span>
+            <span class="c1"># if we don&#39;t set id, the send function will return 0</span>
+            <span class="c1"># in case of failure an exception will be thrown</span>
             <span class="n">msgID</span> <span class="o">=</span> <span class="k">await</span> <span class="n">sms</span><span class="o">.</span><span class="n">send</span><span class="p">(</span>
                 <span class="n">SMS_RECIPIENT</span><span class="p">,</span> <span class="s2">&quot;Test message.&quot;</span><span class="p">,</span> <span class="s2">&quot;expert&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;strategy&quot;</span><span class="p">:</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span> <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">}</span>
             <span class="p">)</span>
-            <span class="c1"># We display the message is sent and the ID</span>
+            <span class="c1"># Display that the message was sent and its ID</span>
             <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;SMS sent, ID : </span><span class="si">{</span><span class="n">msgID</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
             <span class="c1"># We get remaining credits</span>
@@ -282,7 +282,7 @@ Even if it is a little bit different, its principle is the same.</p>
             <span class="k">if</span> <span class="n">credits</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;There are remaining credits&quot;</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No remaining credit&quot;</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No remaining credits&quot;</span><span class="p">)</span>
         <span class="k">except</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">SMSBoxException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
             <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Exception: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
             <span class="k">await</span> <span class="n">session</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
@@ -290,12 +290,12 @@ Even if it is a little bit different, its principle is the same.</p>
 
 <span class="c1"># Specify the API key</span>
 <span class="n">API_KEY</span> <span class="o">=</span> <span class="s2">&quot;xxx&quot;</span>
-<span class="n">SMS_RECIPIENT</span> <span class="o">=</span> <span class="s2">&quot;9990001&quot;</span> <span class="c1"># a sandbox number for a succeffull 0.5 credit SMS</span>
+<span class="n">SMS_RECIPIENT</span> <span class="o">=</span> <span class="s2">&quot;9990001&quot;</span>  <span class="c1"># a sandbox number for a successful 0.5 credit SMS</span>
 
 <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
 </pre></div>
 </div>
-<p>This example shows all actual possibilities of this libraries.
+<p>This example shows all current capabilities of this library.
 If you want to add more, go to the next section.</p>
 </section>
 

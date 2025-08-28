@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Usage example" href="example.html" /><link rel="prev" title="installing" href="install.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Usage example" href="example.html" /><link rel="prev" title="Installing" href="install.html" />
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2025.07.19 -->
         <title>pysmsboxnet - PySMSBoxNet documentation</title>
@@ -199,7 +199,7 @@
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="install.html">installing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="install.html#updating">Updating</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">pysmsboxnet</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#exceptions">Exceptions</a></li>
@@ -252,8 +252,8 @@
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>session</strong> (<em>aiohttp.ClientSession</em>) – the aiohttp session to use</p></li>
-<li><p><strong>host</strong> (<em>str</em>) – the API endpoint host, for example api.smsbox.pro (https is forced)</p></li>
-<li><p><strong>cle_api</strong> (<em>str</em>) – the SMSBox API key, name is in French to reflect the documentation</p></li>
+<li><p><strong>host</strong> (<em>str</em>) – the API endpoint host, for example <code class="docutils literal notranslate"><span class="pre">api.smsbox.pro</span></code> (HTTPS is enforced)</p></li>
+<li><p><strong>cle_api</strong> (<em>str</em>) – the SMSBox API key; the parameter name is in French to match the official documentation</p></li>
 </ul>
 </dd>
 </dl>
@@ -275,14 +275,14 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>dest</strong> (<em>str</em>) – SMS recipient(s), see API documentation about how to format</p></li>
+<li><p><strong>dest</strong> (<em>str</em>) – SMS recipient(s); see the API documentation for the required format</p></li>
 <li><p><strong>msg</strong> (<em>str</em>) – the SMS message</p></li>
-<li><p><strong>mode</strong> (<em>str</em>) – send mode,  mode API parameter</p></li>
-<li><p><strong>parameters</strong> (<em>dict</em>) – other API parameter as strategy or if other charset than UTF8 is needed</p></li>
+<li><p><strong>mode</strong> (<em>str</em>) – send mode (the <code class="docutils literal notranslate"><span class="pre">mode</span></code> API parameter)</p></li>
+<li><p><strong>parameters</strong> (<em>dict</em>) – optional API parameters (e.g., <code class="docutils literal notranslate"><span class="pre">strategy</span></code>), or a charset other than UTF-8</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>SMS ID if id parameter is set to 1 else 0</p>
+<dd class="field-even"><p>SMS ID if the <code class="docutils literal notranslate"><span class="pre">id</span></code> parameter is set to <code class="docutils literal notranslate"><span class="pre">1</span></code>; otherwise <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>int</p>
@@ -301,13 +301,13 @@
 <dl class="py exception">
 <dt class="sig sig-object py" id="pysmsboxnet.exceptions.AuthException">
 <em class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysmsboxnet.exceptions.</span></span><span class="sig-name descname"><span class="pre">AuthException</span></span><a class="headerlink" href="#pysmsboxnet.exceptions.AuthException" title="Link to this definition">¶</a></dt>
-<dd><p>Exception when API returns ERROR 02.</p>
+<dd><p>Exception raised when the API returns ERROR 02.</p>
 </dd></dl>
 
 <dl class="py exception">
 <dt class="sig sig-object py" id="pysmsboxnet.exceptions.BillingException">
 <em class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysmsboxnet.exceptions.</span></span><span class="sig-name descname"><span class="pre">BillingException</span></span><a class="headerlink" href="#pysmsboxnet.exceptions.BillingException" title="Link to this definition">¶</a></dt>
-<dd><p>Exception when API returns ERROR 03.</p>
+<dd><p>Exception raised when the API returns ERROR 03.</p>
 </dd></dl>
 
 <dl class="py exception">
@@ -319,13 +319,13 @@
 <dl class="py exception">
 <dt class="sig sig-object py" id="pysmsboxnet.exceptions.InternalErrorException">
 <em class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysmsboxnet.exceptions.</span></span><span class="sig-name descname"><span class="pre">InternalErrorException</span></span><a class="headerlink" href="#pysmsboxnet.exceptions.InternalErrorException" title="Link to this definition">¶</a></dt>
-<dd><p>Exception when API returns ERROR 05.</p>
+<dd><p>Exception raised when the API returns ERROR 05.</p>
 </dd></dl>
 
 <dl class="py exception">
 <dt class="sig sig-object py" id="pysmsboxnet.exceptions.ParameterErrorException">
 <em class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysmsboxnet.exceptions.</span></span><span class="sig-name descname"><span class="pre">ParameterErrorException</span></span><a class="headerlink" href="#pysmsboxnet.exceptions.ParameterErrorException" title="Link to this definition">¶</a></dt>
-<dd><p>Exception when API returns ERROR 01.</p>
+<dd><p>Exception raised when the API returns ERROR 01.</p>
 </dd></dl>
 
 <dl class="py exception">
@@ -337,7 +337,7 @@
 <dl class="py exception">
 <dt class="sig sig-object py" id="pysmsboxnet.exceptions.WrongRecipientException">
 <em class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysmsboxnet.exceptions.</span></span><span class="sig-name descname"><span class="pre">WrongRecipientException</span></span><a class="headerlink" href="#pysmsboxnet.exceptions.WrongRecipientException" title="Link to this definition">¶</a></dt>
-<dd><p>Exception when API returns ERROR 04.</p>
+<dd><p>Exception raised when the API returns ERROR 04.</p>
 </dd></dl>
 
 </section>
@@ -363,7 +363,7 @@
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">installing</div>
+                <div class="title">Installing</div>
                 
               </div>
             </a>

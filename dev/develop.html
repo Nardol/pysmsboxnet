@@ -199,7 +199,7 @@
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="install.html">installing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="install.html#updating">Updating</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pysmsboxnet.html">pysmsboxnet</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pysmsboxnet.html#exceptions">Exceptions</a></li>
@@ -243,16 +243,16 @@
         <article role="main" id="furo-main-content">
           <section id="add-features-to-pysmsboxnet">
 <h1>Add features to pysmsboxnet<a class="headerlink" href="#add-features-to-pysmsboxnet" title="Link to this heading">¶</a></h1>
-<p>To implement a new API feature, add a new method which will call the following private method:</p>
+<p>To implement a new API feature, add a new method that calls the following private method:</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="pysmsboxnet.api.Client.__smsbox_request">
 <em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysmsboxnet.api.Client.</span></span><span class="sig-name descname"><span class="pre">__smsbox_request</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uri</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#pysmsboxnet.api.Client.__smsbox_request" title="Link to this definition">¶</a></dt>
-<dd><p>Private method to send a request to the API.</p>
+<dd><p>Send a request to the API (internal helper).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>uri</strong> (<em>str</em>) – the host API endpoint, for example api.php or 1.1/api.php</p></li>
-<li><p><strong>parameters</strong> (<em>dict</em>) – parameters to pass to the API</p></li>
+<li><p><strong>uri</strong> (<em>str</em>) – the API path, for example <code class="docutils literal notranslate"><span class="pre">api.php</span></code> or <code class="docutils literal notranslate"><span class="pre">1.1/api.php</span></code></p></li>
+<li><p><strong>parameters</strong> (<em>dict</em>) – form parameters to pass to the API</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -263,19 +263,19 @@
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><ul class="simple">
-<li><p><a class="reference internal" href="pysmsboxnet.html#pysmsboxnet.exceptions.HTTPException" title="pysmsboxnet.exceptions.HTTPException"><strong>pysmsboxnet.exceptions.HTTPException</strong></a> – if HTTP status is not 200 OK</p></li>
-<li><p><a class="reference internal" href="pysmsboxnet.html#pysmsboxnet.exceptions.SMSBoxException" title="pysmsboxnet.exceptions.SMSBoxException"><strong>pysmsboxnet.exceptions.SMSBoxException</strong></a> – SMSBox API returned ERROR</p></li>
-<li><p><a class="reference internal" href="pysmsboxnet.html#pysmsboxnet.exceptions.ParameterErrorException" title="pysmsboxnet.exceptions.ParameterErrorException"><strong>pysmsboxnet.exceptions.ParameterErrorException</strong></a> – bad parameters were passed to the API</p></li>
-<li><p><a class="reference internal" href="pysmsboxnet.html#pysmsboxnet.exceptions.AuthException" title="pysmsboxnet.exceptions.AuthException"><strong>pysmsboxnet.exceptions.AuthException</strong></a> – bad API key has been specified</p></li>
-<li><p><a class="reference internal" href="pysmsboxnet.html#pysmsboxnet.exceptions.BillingException" title="pysmsboxnet.exceptions.BillingException"><strong>pysmsboxnet.exceptions.BillingException</strong></a> – there are no enough credits to send the SMS</p></li>
+<li><p><a class="reference internal" href="pysmsboxnet.html#pysmsboxnet.exceptions.HTTPException" title="pysmsboxnet.exceptions.HTTPException"><strong>pysmsboxnet.exceptions.HTTPException</strong></a> – HTTP status is not 200 OK</p></li>
+<li><p><a class="reference internal" href="pysmsboxnet.html#pysmsboxnet.exceptions.SMSBoxException" title="pysmsboxnet.exceptions.SMSBoxException"><strong>pysmsboxnet.exceptions.SMSBoxException</strong></a> – API returned <code class="docutils literal notranslate"><span class="pre">ERROR</span></code></p></li>
+<li><p><a class="reference internal" href="pysmsboxnet.html#pysmsboxnet.exceptions.ParameterErrorException" title="pysmsboxnet.exceptions.ParameterErrorException"><strong>pysmsboxnet.exceptions.ParameterErrorException</strong></a> – invalid or missing parameters</p></li>
+<li><p><a class="reference internal" href="pysmsboxnet.html#pysmsboxnet.exceptions.AuthException" title="pysmsboxnet.exceptions.AuthException"><strong>pysmsboxnet.exceptions.AuthException</strong></a> – bad API key specified</p></li>
+<li><p><a class="reference internal" href="pysmsboxnet.html#pysmsboxnet.exceptions.BillingException" title="pysmsboxnet.exceptions.BillingException"><strong>pysmsboxnet.exceptions.BillingException</strong></a> – not enough credits to send the SMS</p></li>
 <li><p><a class="reference internal" href="pysmsboxnet.html#pysmsboxnet.exceptions.WrongRecipientException" title="pysmsboxnet.exceptions.WrongRecipientException"><strong>pysmsboxnet.exceptions.WrongRecipientException</strong></a> – recipient format is wrong</p></li>
-<li><p><a class="reference internal" href="pysmsboxnet.html#pysmsboxnet.exceptions.InternalErrorException" title="pysmsboxnet.exceptions.InternalErrorException"><strong>pysmsboxnet.exceptions.InternalErrorException</strong></a> – SMSBox API internal error</p></li>
+<li><p><a class="reference internal" href="pysmsboxnet.html#pysmsboxnet.exceptions.InternalErrorException" title="pysmsboxnet.exceptions.InternalErrorException"><strong>pysmsboxnet.exceptions.InternalErrorException</strong></a> – API internal error</p></li>
 </ul>
 </dd>
 </dl>
 </dd></dl>
 
-<p>If an exception is needed, put it in pysmsboxnet/exceptions.py and make it extend <a class="reference internal" href="pysmsboxnet.html#pysmsboxnet.exceptions.SMSBoxException" title="pysmsboxnet.exceptions.SMSBoxException"><code class="xref py py-class docutils literal notranslate"><span class="pre">pysmsboxnet.exceptions.SMSBoxException</span></code></a>.</p>
+<p>If an exception is needed, place it in <code class="docutils literal notranslate"><span class="pre">pysmsboxnet/exceptions.py</span></code> and have it extend <a class="reference internal" href="pysmsboxnet.html#pysmsboxnet.exceptions.SMSBoxException" title="pysmsboxnet.exceptions.SMSBoxException"><code class="xref py py-class docutils literal notranslate"><span class="pre">pysmsboxnet.exceptions.SMSBoxException</span></code></a>.</p>
 </section>
 
         </article>
