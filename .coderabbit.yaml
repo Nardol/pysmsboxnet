@@ -1,0 +1,37 @@
+---
+# yamllint disable rule:line-length
+# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
+
+version: 2
+
+review:
+  # Balanced signal/noise for OSS
+  profile: CHILL
+  # Only review on explicit @coderabbit review comment
+  auto_review: false
+  # Cap per-run review time (~2 minutes)
+  max_duration_ms: 120000
+
+paths:
+  include:
+    - "src/**"
+    - "tests/**"
+    - "docs/**"
+    - "AGENTS.md"
+    - ".github/workflows/**"
+  exclude:
+    - "docs/_build/**"
+    - ".ruff_cache/**"
+    - ".mypy_cache/**"
+    - ".pytest_cache/**"
+    - "src/pysmsboxnet/_version.py"
+    - "src/pysmsboxnet.egg-info/**"
+    - ".venv/**"
+    - "dist/**"
+    - "node_modules/**"
+
+comments:
+  # Always add a high-level summary comment
+  summarize: true
+  # Inline suggestions where safe
+  suggestions: true
