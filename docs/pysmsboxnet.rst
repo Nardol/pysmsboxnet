@@ -11,7 +11,7 @@ Exceptions
 
 The following exceptions can be thrown.
 
-All exceptions are not applicable to all case but some are common, for example in case of an internal error or bad API key provided.
+Not all exceptions apply to every case, but some are common (for example, internal errors or an invalid API key).
 
 .. automodule:: pysmsboxnet.exceptions
    :members:
