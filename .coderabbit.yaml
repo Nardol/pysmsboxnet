@@ -4,42 +4,35 @@
 
 version: 2
 
-review:
-  # Balanced signal/noise for OSS
-  profile: CHILL
-  # Only review on explicit @coderabbit review comment
-  auto_review: false
-  # Cap per-run review time (~2 minutes)
-  max_duration_ms: 120000
-
-paths:
-  include:
-    - "src/**"
-    - "tests/**"
-    - "docs/**"
-    - "AGENTS.md"
-    - ".github/workflows/**"
-  exclude:
-    - "docs/_build/**"
-    - ".ruff_cache/**"
-    - ".mypy_cache/**"
-    - ".pytest_cache/**"
-    - "**/__pycache__/**"
-    - "**/.cache/**"
-    - "src/pysmsboxnet/_version.py"
-    - "src/pysmsboxnet.egg-info/**"
-    - "pysmsboxnet.egg-info/**"
-    - "**/*.egg-info/**"
-    - ".venv/**"
-    - "venv/**"
-    - "build/**"
-    - "dist/**"
-    - "node_modules/**"
-    - "**/*.dist-info/**"
-
-comments:
-  # Always add a high-level summary comment
-  summarize: true
-  # Inline suggestions where safe
-  suggestions: true
-# Note: Adjust include/exclude paths as the project evolves.
+reviews:
+  profile: chill
+  auto_review:
+    enabled: false
+    auto_incremental_review: false
+  tools:
+    github-checks:
+      timeout_ms: 120000
+  high_level_summary: true
+  path_filters:
+    - src/**
+    - tests/**
+    - docs/**
+    - AGENTS.md
+    - .github/workflows/**
+    - "!docs/_build/**"
+    - "!.ruff_cache/**"
+    - "!.mypy_cache/**"
+    - "!.pytest_cache/**"
+    - "!**/__pycache__/**"
+    - "!.cache/**"
+    - "!src/pysmsboxnet/_version.py"
+    - "!src/pysmsboxnet.egg-info/**"
+    - "!pysmsboxnet.egg-info/**"
+    - "!**/*.egg-info/**"
+    - "!.venv/**"
+    - "!venv/**"
+    - "!build/**"
+    - "!dist/**"
+    - "!node_modules/**"
+    - "!**/*.dist-info/**"
+  # Note: Adjust include/exclude paths as the project evolves.
