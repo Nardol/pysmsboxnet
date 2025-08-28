@@ -32,6 +32,7 @@
 - Linting/formatting: Ruff (checks + import order), ruff-format via pre-commit. Long lines are allowed; most docstring rules apply.
 - Naming: snake_case for functions/variables, PascalCase for classes, exceptions suffixed with `Exception` (see `exceptions.py`).
 - Public APIs should include concise docstrings and logging where helpful.
+- Docstrings: prefer reST-style (Sphinx autodoc-friendly); keep them concise and rely on type hints in signatures.
 
 ## Testing Guidelines
 
@@ -45,6 +46,7 @@
 - Commits: follow Conventional Commits (e.g., `feat:`, `fix:`, `refactor:`, `chore(deps):`).
 - PRs: provide a clear description, link related issues, include tests/docs updates, and note behavior changes. CI runs on Linux/Windows/macOS (Python 3.11–3.13).
 - Before opening: run `uv run pre-commit run -a` and `uv run pytest`; ensure CI parity locally.
+- Branch naming: use short, scoped prefixes: `feat/*`, `fix/*`, `docs/*`, `chore/*`, `refactor/*`.
 
 ## Security & Configuration Tips
 
