@@ -18,6 +18,7 @@ reviews:
     - tests/**
     - docs/**
     - AGENTS.md
+    - .coderabbit.yaml
     - .github/workflows/**
     - "!docs/_build/**"
     - "!.ruff_cache/**"
