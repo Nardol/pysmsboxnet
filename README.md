@@ -1,10 +1,10 @@
 # pysmsboxnet
 
-Asynchronous Python library for [smsbox.net](https://www.smsbox.net) API.
-Currently it allows to send a SMS, using the [v1.1 API](https://en.smsbox.net/docs/doc-API-SMSBOX-1.1-EN.html).
+Asynchronous Python library for the [smsbox.net](https://www.smsbox.net) API.
+Currently, it allows you to send an SMS using the [v1.1 API](https://en.smsbox.net/docs/doc-API-SMSBOX-1.1-EN.html).
 You can also [download the documentation](https://en.smsbox.net/docs/doc-API-SMSBOX-1.1-EN.pdf).
-Future version might allow to use other [account features](https://en.smsbox.net/docs/doc-APIFunctions-SMSBOX-FR.html), this doc is in French.
-The exception is `get_credits()` which allows getting remaining credits.
+Future versions might allow using other [account features](https://en.smsbox.net/docs/doc-APIFunctions-SMSBOX-FR.html) (this documentation is in French).
+Additionally, `get_credits()` lets you retrieve the remaining credits.
 
 ## Installing
 
@@ -18,6 +18,6 @@ An example is also available in the documentation.
 ## Documentation
 
 - [Latest stable version](https://nardol.github.io/pysmsboxnet/stable)
-- Future previous versions documentations will be available at `https://nardol.github.io/pysmsboxnet/yyyy.mm.n`
+- Documentation for previous versions will be available at `https://nardol.github.io/pysmsboxnet/yyyy.mm.n`
 - [Latest dev documentation](https://nardol.github.io/pysmsboxnet/dev)
   It is updated each time something is pushed to the `main` branch.

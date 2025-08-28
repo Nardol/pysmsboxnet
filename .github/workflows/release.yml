@@ -64,7 +64,7 @@ jobs:
     if: "!github.event.release.prerelease"
     needs: deploy
     runs-on: ubuntu-latest
-    name: Build and deploydocumentation
+    name: Build and deploy documentation
     steps:
       - name: 📥 Checkout the repository
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
