@@ -13,6 +13,7 @@ reviews:
     github-checks:
       timeout_ms: 120000
   high_level_summary: true
+  review_status: false
   path_filters:
     - src/**
     - tests/**
