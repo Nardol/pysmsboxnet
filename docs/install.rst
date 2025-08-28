@@ -1,4 +1,4 @@
-installing
+Installing
 ==========
 
 You can install PySMSBoxNet using pip:
@@ -7,7 +7,7 @@ You can install PySMSBoxNet using pip:
 
    pip install pysmsboxnet
 
-If you want to test a beta version, you can add the ``pre`` command line argument:
+If you want to test a beta version, you can add the ``--pre`` flag:
 
 .. code-block:: shell
 
@@ -16,7 +16,7 @@ If you want to test a beta version, you can add the ``pre`` command line argumen
 Updating
 ========
 
-Updating is also possible using pip:
+You can update using pip:
 
 .. code-block:: shell
 

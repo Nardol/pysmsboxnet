@@ -16,8 +16,8 @@ class Client:
     """API client class.
 
     :param aiohttp.ClientSession session: the aiohttp session to use
-    :param str host: the API endpoint host, for example api.smsbox.pro (https is forced)
-    :param str cle_api: the SMSBox API key, name is in French to reflect the documentation
+    :param str host: the API endpoint host, for example ``api.smsbox.pro`` (HTTPS is enforced)
+    :param str cle_api: the SMSBox API key; the parameter name is in French to match the official documentation
     """
 
     def __init__(self, session: ClientSession, host: str, cle_api: str):
@@ -27,21 +27,21 @@ class Client:
         self.session = session
 
     async def __smsbox_request(self, uri: str, parameters: dict[str, str]) -> str:
-        """Private method to send a request to the API.
+        """Send a request to the API (internal helper).
 
-        :param str uri: the host API endpoint, for example api.php or 1.1/api.php
-        :param dict parameters: parameters to pass to the API
+        :param str uri: the API path, for example ``api.php`` or ``1.1/api.php``
+        :param dict parameters: form parameters to pass to the API
 
         :returns: SMSBox API response
         :rtype: str
 
-        :raises pysmsboxnet.exceptions.HTTPException: if HTTP status is not 200 OK
-        :raises pysmsboxnet.exceptions.SMSBoxException: SMSBox API returned ERROR
-        :raises pysmsboxnet.exceptions.ParameterErrorException: bad parameters were passed to the API
-        :raises pysmsboxnet.exceptions.AuthException: bad API key has been specified
-        :raises pysmsboxnet.exceptions.BillingException: there are no enough credits to send the SMS
+        :raises pysmsboxnet.exceptions.HTTPException: HTTP status is not 200 OK
+        :raises pysmsboxnet.exceptions.SMSBoxException: API returned ``ERROR``
+        :raises pysmsboxnet.exceptions.ParameterErrorException: invalid or missing parameters
+        :raises pysmsboxnet.exceptions.AuthException: bad API key specified
+        :raises pysmsboxnet.exceptions.BillingException: not enough credits to send the SMS
         :raises pysmsboxnet.exceptions.WrongRecipientException: recipient format is wrong
-        :raises pysmsboxnet.exceptions.InternalErrorException: SMSBox API internal error
+        :raises pysmsboxnet.exceptions.InternalErrorException: API internal error
         """
         headers = {
             "authorization": f"App {self.cle_api}",
@@ -83,12 +83,12 @@ class Client:
     ) -> int:
         """Send a SMS.
 
-        :param str dest: SMS recipient(s), see API documentation about how to format
+        :param str dest: SMS recipient(s); see the API documentation for the required format
         :param str msg: the SMS message
-        :param str mode: send mode,  mode API parameter
-        :param dict parameters: other API parameter as strategy or if other charset than UTF8 is needed
+        :param str mode: send mode (the ``mode`` API parameter)
+        :param dict parameters: optional API parameters (e.g., ``strategy``), or a charset other than UTF-8
 
-        :returns: SMS ID if id parameter is set to 1 else 0
+        :returns: SMS ID if the ``id`` parameter is set to ``1``; otherwise ``0``
         :rtype: int
         """
         post_data = {
