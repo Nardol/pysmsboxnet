@@ -1,0 +1,39 @@
+---
+# yamllint disable rule:line-length
+# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
+
+version: 2
+
+reviews:
+  profile: chill
+  auto_review:
+    enabled: false
+    auto_incremental_review: false
+  tools:
+    github-checks:
+      timeout_ms: 120000
+  high_level_summary: true
+  path_filters:
+    - src/**
+    - tests/**
+    - docs/**
+    - AGENTS.md
+    - .coderabbit.yaml
+    - .github/workflows/**
+    - "!docs/_build/**"
+    - "!.ruff_cache/**"
+    - "!.mypy_cache/**"
+    - "!.pytest_cache/**"
+    - "!**/__pycache__/**"
+    - "!.cache/**"
+    - "!src/pysmsboxnet/_version.py"
+    - "!src/pysmsboxnet.egg-info/**"
+    - "!pysmsboxnet.egg-info/**"
+    - "!**/*.egg-info/**"
+    - "!.venv/**"
+    - "!venv/**"
+    - "!build/**"
+    - "!dist/**"
+    - "!node_modules/**"
+    - "!**/*.dist-info/**"
+  # Note: Adjust include/exclude paths as the project evolves.
