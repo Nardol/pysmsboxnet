@@ -284,3 +284,24 @@ async def test_error_credits(aresponses: Any) -> None:
         )
         with pytest.raises(exceptions.SMSBoxException):
             await sms.get_credits()
+
+
+@pytest.mark.asyncio
+async def test_send_ok_with_host_and_port(aresponses: Any) -> None:
+    """Test sending with a host that includes an explicit port."""
+    expected_id = 4242
+    aresponses.add(
+        "localhost:8443",
+        "/1.1/api.php",
+        "post",
+        aresponses.Response(text=f"OK {expected_id}", status=200),
+    )
+    async with aiohttp.ClientSession() as session:
+        sms = Client(session, "localhost:8443", SMSBOX_API_KEY)
+        result = await sms.send(
+            SMS_RECIPIENT,
+            SMS_MSG,
+            SEND_MODE,
+            {"strategy": SMSBOX_STRATEGY, "id": "1"},
+        )
+        assert result == expected_id
