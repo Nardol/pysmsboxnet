@@ -72,8 +72,8 @@ exclude = [
     ".github",
     "codecov.yml",
     "example.py",
-    "script",
-    ".pre-commit-config.yaml "
+    "scripts",
+    ".pre-commit-config.yaml"
 ]
 
 [tool.uv]
