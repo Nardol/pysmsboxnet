@@ -42,7 +42,14 @@ class Client:
         if not host or "/" in host or "://" in host or " " in host:
             raise ValueError("host must be a bare hostname, e.g. 'api.smsbox.pro'")
 
-        self.host = host
+        # Support optional port in host (e.g. "localhost:8443" or "[::1]:8443").
+        try:
+            parsed_host = URL("https://" + host)
+        except ValueError as err:  # pragma: no cover - defensive
+            raise ValueError("invalid host format") from err
+
+        self.host = parsed_host.host or host
+        self._port = parsed_host.port
         self.cle_api = cle_api
         self.session = session
 
@@ -95,7 +102,12 @@ class Client:
             uri,
             self._redact(parameters),
         )
-        url = URL.build(scheme="https", host=self.host, path=f"/{uri.lstrip('/')}")
+        url = URL.build(
+            scheme="https",
+            host=self.host,
+            port=self._port,
+            path=f"/{uri.lstrip('/')}",
+        )
         try:
             async with self.session.post(
                 url=url.human_repr(),
