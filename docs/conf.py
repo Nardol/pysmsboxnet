@@ -1,6 +1,6 @@
 import os
 import sys
-from importlib.metadata import PackageNotFoundError, version
+from importlib.metadata import PackageNotFoundError, version as get_version
 
 sys.path.insert(0, os.path.abspath("."))
 sys.path.insert(0, os.path.abspath(".."))
@@ -17,11 +17,9 @@ project = "PySMSBoxNet"
 copyright = "2022, Patrick ZAJDA"
 author = "Patrick ZAJDA"
 try:
-    version = version("pysmsboxnet")
-    print(version)
+    release = get_version("pysmsboxnet")
 except PackageNotFoundError:
-    print("Package pysmsboxnet not found")
-    # pass
+    release = "unknown"
 
 
 # -- General configuration ---------------------------------------------------

@@ -38,7 +38,6 @@ async def main():
                 print("No remaining credits")
         except exceptions.SMSBoxException as e:
             print(f"Exception: {e}")
-            await session.close()
 
 
 # Get API key from environment variable

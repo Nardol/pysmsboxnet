@@ -60,3 +60,11 @@ class HTTPException(SMSBoxException):
     def __init__(self, error_code: int):
         """Initialize HTTP error exception."""
         super().__init__(f"HTTP error ({error_code})")
+
+
+class NetworkException(SMSBoxException):
+    """Exception raised on network/transport errors (timeout, DNS, etc.)."""
+
+    def __init__(self, message: str):
+        """Initialize network error exception with a message."""
+        super().__init__(message)
