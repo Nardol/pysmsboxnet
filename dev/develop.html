@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="prev" title="Usage example" href="example.html" />
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2025.07.19 -->
-        <title>Add features to pysmsboxnet - PySMSBoxNet documentation</title>
+        <title>Add features to pysmsboxnet - PySMSBoxNet 2024.6.2.dev390+gaa2232b86 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d111a655" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=25af2a20" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
@@ -166,7 +166,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">PySMSBoxNet  documentation</div></a>
+      <a href="index.html"><div class="brand">PySMSBoxNet 2024.6.2.dev390+gaa2232b86 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -189,7 +189,7 @@
       
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
-  <span class="sidebar-brand-text">PySMSBoxNet  documentation</span>
+  <span class="sidebar-brand-text">PySMSBoxNet 2024.6.2.dev390+gaa2232b86 documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -244,15 +244,15 @@
           <section id="add-features-to-pysmsboxnet">
 <h1>Add features to pysmsboxnet<a class="headerlink" href="#add-features-to-pysmsboxnet" title="Link to this heading">¶</a></h1>
 <p>To implement a new API feature, add a new method that calls the following private method:</p>
-<dl class="py function">
-<dt class="sig sig-object py" id="pysmsboxnet.api.Client.__smsbox_request">
-<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pysmsboxnet.api.Client.</span></span><span class="sig-name descname"><span class="pre">__smsbox_request</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uri</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#pysmsboxnet.api.Client.__smsbox_request" title="Link to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pysmsboxnet.api.Client._smsbox_request">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">Client.</span></span><span class="sig-name descname"><span class="pre">_smsbox_request</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uri</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#pysmsboxnet.api.Client._smsbox_request" title="Link to this definition">¶</a></dt>
 <dd><p>Send a request to the API (internal helper).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>uri</strong> (<em>str</em>) – the API path, for example <code class="docutils literal notranslate"><span class="pre">api.php</span></code> or <code class="docutils literal notranslate"><span class="pre">1.1/api.php</span></code></p></li>
-<li><p><strong>parameters</strong> (<em>dict</em>) – form parameters to pass to the API</p></li>
+<li><p><strong>parameters</strong> (<em>Mapping</em>) – form parameters to pass to the API</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -326,7 +326,7 @@
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Add features to pysmsboxnet</a><ul>
-<li><a class="reference internal" href="#pysmsboxnet.api.Client.__smsbox_request"><code class="docutils literal notranslate"><span class="pre">__smsbox_request()</span></code></a></li>
+<li><a class="reference internal" href="#pysmsboxnet.api.Client._smsbox_request"><code class="docutils literal notranslate"><span class="pre">Client._smsbox_request()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -338,7 +338,7 @@
       
     </aside>
   </div>
-</div><script src="_static/documentation_options.js?v=5929fcd5"></script>
+</div><script src="_static/documentation_options.js?v=60380ee9"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/scripts/furo.js?v=46bd48cc"></script>
