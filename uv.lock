@@ -471,11 +471,11 @@ wheels = [
 
 [[package]]
 name = "identify"
-version = "2.6.13"
+version = "2.6.14"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/82/ca/ffbabe3635bb839aa36b3a893c91a9b0d368cb4d8073e03a12896970af82/identify-2.6.13.tar.gz", hash = "sha256:da8d6c828e773620e13bfa86ea601c5a5310ba4bcd65edf378198b56a1f9fb32", size = 99243, upload-time = "2025-08-09T19:35:00.6Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/52/c4/62963f25a678f6a050fb0505a65e9e726996171e6dbe1547f79619eefb15/identify-2.6.14.tar.gz", hash = "sha256:663494103b4f717cb26921c52f8751363dc89db64364cd836a9bf1535f53cd6a", size = 99283, upload-time = "2025-09-06T19:30:52.938Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/e7/ce/461b60a3ee109518c055953729bf9ed089a04db895d47e95444071dcdef2/identify-2.6.13-py2.py3-none-any.whl", hash = "sha256:60381139b3ae39447482ecc406944190f690d4a2997f2584062089848361b33b", size = 99153, upload-time = "2025-08-09T19:34:59.1Z" },
+    { url = "https://files.pythonhosted.org/packages/e5/ae/2ad30f4652712c82f1c23423d79136fbce338932ad166d70c1efb86a5998/identify-2.6.14-py2.py3-none-any.whl", hash = "sha256:11a073da82212c6646b1f39bb20d4483bfb9543bd5566fec60053c4bb309bf2e", size = 99172, upload-time = "2025-09-06T19:30:51.759Z" },
 ]
 
 [[package]]
@@ -722,11 +722,11 @@ wheels = [
 
 [[package]]
 name = "platformdirs"
-version = "4.3.8"
+version = "4.4.0"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/fe/8b/3c73abc9c759ecd3f1f7ceff6685840859e8070c4d947c93fae71f6a0bf2/platformdirs-4.3.8.tar.gz", hash = "sha256:3d512d96e16bcb959a814c9f348431070822a6496326a4be0911c40b5a74c2bc", size = 21362, upload-time = "2025-05-07T22:47:42.121Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/23/e8/21db9c9987b0e728855bd57bff6984f67952bea55d6f75e055c46b5383e8/platformdirs-4.4.0.tar.gz", hash = "sha256:ca753cf4d81dc309bc67b0ea38fd15dc97bc30ce419a7f58d13eb3bf14c4febf", size = 21634, upload-time = "2025-08-26T14:32:04.268Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/fe/39/979e8e21520d4e47a0bbe349e2713c0aac6f3d853d0e5b34d76206c439aa/platformdirs-4.3.8-py3-none-any.whl", hash = "sha256:ff7059bb7eb1179e2685604f4aaf157cfd9535242bd23742eadc3c13542139b4", size = 18567, upload-time = "2025-05-07T22:47:40.376Z" },
+    { url = "https://files.pythonhosted.org/packages/40/4b/2028861e724d3bd36227adfa20d3fd24c3fc6d52032f4a93c133be5d17ce/platformdirs-4.4.0-py3-none-any.whl", hash = "sha256:abd01743f24e5287cd7a5db3752faf1a2d65353f38ec26d98e25a6db65958c85", size = 18654, upload-time = "2025-08-26T14:32:02.735Z" },
 ]
 
 [[package]]
@@ -1024,11 +1024,11 @@ wheels = [
 
 [[package]]
 name = "soupsieve"
-version = "2.7"
+version = "2.8"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/3f/f4/4a80cd6ef364b2e8b65b15816a843c0980f7a5a2b4dc701fc574952aa19f/soupsieve-2.7.tar.gz", hash = "sha256:ad282f9b6926286d2ead4750552c8a6142bc4c783fd66b0293547c8fe6ae126a", size = 103418, upload-time = "2025-04-20T18:50:08.518Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/6d/e6/21ccce3262dd4889aa3332e5a119a3491a95e8f60939870a3a035aabac0d/soupsieve-2.8.tar.gz", hash = "sha256:e2dd4a40a628cb5f28f6d4b0db8800b8f581b65bb380b97de22ba5ca8d72572f", size = 103472, upload-time = "2025-08-27T15:39:51.78Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/e7/9c/0e6afc12c269578be5c0c1c9f4b49a8d32770a080260c333ac04cc1c832d/soupsieve-2.7-py3-none-any.whl", hash = "sha256:6e60cc5c1ffaf1cebcc12e8188320b72071e922c2e897f737cadce79ad5d30c4", size = 36677, upload-time = "2025-04-20T18:50:07.196Z" },
+    { url = "https://files.pythonhosted.org/packages/14/a0/bb38d3b76b8cae341dad93a2dd83ab7462e6dbcdd84d43f54ee60a8dc167/soupsieve-2.8-py3-none-any.whl", hash = "sha256:0cc76456a30e20f5d7f2e14a98a4ae2ee4e5abdc7c5ea0aafe795f344bc7984c", size = 36679, upload-time = "2025-08-27T15:39:50.179Z" },
 ]
 
 [[package]]
@@ -1166,20 +1166,20 @@ wheels = [
 
 [[package]]
 name = "trove-classifiers"
-version = "2025.8.6.13"
+version = "2025.8.26.11"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/c3/21/707af14daa638b0df15b5d5700349e0abdd3e5140069f9ab6e0ccb922806/trove_classifiers-2025.8.6.13.tar.gz", hash = "sha256:5a0abad839d2ed810f213ab133d555d267124ddea29f1d8a50d6eca12a50ae6e", size = 16932, upload-time = "2025-08-06T13:26:26.479Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/f7/7c/78ea329adc8be4353f9ef8ee5b7498450fcbd1a02fed6cd444344eb0bf63/trove_classifiers-2025.8.26.11.tar.gz", hash = "sha256:e73efff317c492a7990092f9c12676c705bf6cfe40a258a93f63f4b4c9941432", size = 16960, upload-time = "2025-08-26T11:30:12.728Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/d5/44/323a87d78f04d5329092aada803af3612dd004a64b69ba8b13046601a8c9/trove_classifiers-2025.8.6.13-py3-none-any.whl", hash = "sha256:c4e7fc83012770d80b3ae95816111c32b085716374dccee0d3fbf5c235495f9f", size = 14121, upload-time = "2025-08-06T13:26:25.063Z" },
+    { url = "https://files.pythonhosted.org/packages/4a/40/d54944eeb5646fb4b1c98d4601fe5e0812dd2e7c0aa94d53fc46457effc8/trove_classifiers-2025.8.26.11-py3-none-any.whl", hash = "sha256:887fb0a402bdbecd4415a52c06e6728f8bdaa506a7143372d2b893e2c5e2d859", size = 14140, upload-time = "2025-08-26T11:30:11.427Z" },
 ]
 
 [[package]]
 name = "typing-extensions"
-version = "4.14.1"
+version = "4.15.0"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/98/5a/da40306b885cc8c09109dc2e1abd358d5684b1425678151cdaed4731c822/typing_extensions-4.14.1.tar.gz", hash = "sha256:38b39f4aeeab64884ce9f74c94263ef78f3c22467c8724005483154c26648d36", size = 107673, upload-time = "2025-07-04T13:28:34.16Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/72/94/1a15dd82efb362ac84269196e94cf00f187f7ed21c242792a923cdb1c61f/typing_extensions-4.15.0.tar.gz", hash = "sha256:0cea48d173cc12fa28ecabc3b837ea3cf6f38c6d1136f85cbaaf598984861466", size = 109391, upload-time = "2025-08-25T13:49:26.313Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/b5/00/d631e67a838026495268c2f6884f3711a15a9a2a96cd244fdaea53b823fb/typing_extensions-4.14.1-py3-none-any.whl", hash = "sha256:d1e1e3b58374dc93031d6eda2420a48ea44a36c2b4766a4fdeb3710755731d76", size = 43906, upload-time = "2025-07-04T13:28:32.743Z" },
+    { url = "https://files.pythonhosted.org/packages/18/67/36e9267722cc04a6b9f15c7f3441c2363321a3ea07da7ae0c0707beb2a9c/typing_extensions-4.15.0-py3-none-any.whl", hash = "sha256:f0fa19c6845758ab08074a0cfa8b7aecb71c999ca73d62883bc25cc018c4e548", size = 44614, upload-time = "2025-08-25T13:49:24.86Z" },
 ]
 
 [[package]]
