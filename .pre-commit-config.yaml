@@ -53,7 +53,9 @@ repos:
     rev: v8.28.0
     hooks:
       - id: gitleaks
-        args: ["protect", "--staged", "--redact"]
+        # The hook runs `gitleaks git` under the hood.
+        # Scan only staged changes (fast for local commits) and redact output.
+        args: ["--redact", "--staged"]
 ci:
   skip:
     - "mypy"
