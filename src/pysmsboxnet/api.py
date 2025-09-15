@@ -55,7 +55,7 @@ class Client:
 
         if timeout is None:
             self._timeout = ClientTimeout(total=10)
-        elif isinstance(timeout, (int, float)):  # noqa: UP038
+        elif isinstance(timeout, (int, float)):
             self._timeout = ClientTimeout(total=float(timeout))
         else:
             self._timeout = timeout
@@ -138,7 +138,7 @@ class Client:
             # while preserving HTTPException raised above.
             if isinstance(err, exceptions.SMSBoxException):
                 raise
-            if isinstance(err, (ClientError, asyncio.TimeoutError)):  # noqa: UP038
+            if isinstance(err, (ClientError, asyncio.TimeoutError)):
                 raise exceptions.NetworkException(str(err)) from err
             raise
 
