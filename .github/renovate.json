@@ -10,6 +10,12 @@
   },
   "packageRules": [
     {
+      "matchPackageNames": ["sphinx"],
+      "matchFileNames": ["pyproject.toml"],
+      "matchCurrentValue": "/^9\\.0\\./",
+      "allowedVersions": "<9.1.0"
+    },
+    {
       "matchUpdateTypes": ["minor", "patch", "digest"],
       "automerge": true
     },
