@@ -15,13 +15,13 @@ repos:
           - --skip="./.*"
           - --quiet-level=2
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.14.11
+    rev: v0.14.13
     hooks:
       - id: ruff
         args: [--fix]
       - id: ruff-format
   - repo: https://github.com/adrienverge/yamllint.git
-    rev: v1.37.1
+    rev: v1.38.0
     hooks:
       - id: yamllint
   - repo: https://github.com/pre-commit/mirrors-prettier
@@ -29,11 +29,11 @@ repos:
     hooks:
       - id: prettier
   - repo: https://github.com/astral-sh/uv-pre-commit
-    rev: 0.9.24
+    rev: 0.9.26
     hooks:
       - id: uv-lock
   - repo: https://github.com/renovatebot/pre-commit-hooks
-    rev: 42.80.0
+    rev: 42.84.0
     hooks:
       - id: renovate-config-validator
   - repo: local
