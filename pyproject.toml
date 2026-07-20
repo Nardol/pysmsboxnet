@@ -40,12 +40,12 @@ doc = [
     "furo==2025.12.19",
 ]
 lint = [
-    "mypy==2.2.0",
+    "mypy==2.3.0",
     "pre-commit==4.6.0",
 ]
 test = [
     "aresponses==3.0.0",
-    "coverage==7.15.1",
+    "coverage==7.15.2",
     "pytest==9.1.1",
     "pytest-asyncio==1.4.0",
     "pytest-cov==7.1.0",
